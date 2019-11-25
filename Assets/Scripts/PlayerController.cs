@@ -7,6 +7,11 @@ public class PlayerController : MonoBehaviour
     // Variables
     public float moveSpeed;
     private Animator animator;
+    private bool playerMoving;
+    private Vector2 lastMove;
+
+    private float horizontalMovement;
+    private float verticalMovement;
     // Variables
 
     // Start is called before the first frame update
@@ -18,21 +23,41 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Every frame the player movement is false
+        this.playerMoving = false;
         // Get the movement from human player
-        var horizontalMovement = Input.GetAxisRaw("Horizontal");
-        var verticalMovement = Input.GetAxisRaw("Vertical");
+        this.horizontalMovement = Input.GetAxisRaw("Horizontal");
+        this.verticalMovement = Input.GetAxisRaw("Vertical");
+        // Last Movement
         // Move the player left, right
-        if(horizontalMovement > 0.5f || horizontalMovement < -0.5f)
+        if (this.horizontalMovement > 0.5f || this.horizontalMovement < -0.5f)
         {
-            transform.Translate(new Vector3(horizontalMovement * this.moveSpeed * Time.deltaTime, 0f, 0f));
+            this.MoveHorizontal();
         }
         // Move the player up, down
-        if(verticalMovement > 0.5f || verticalMovement < -0.5f)
+        if(this.verticalMovement > 0.5f || this.verticalMovement < -0.5f)
         {
-            transform.Translate(new Vector3(0f, verticalMovement * this.moveSpeed * Time.deltaTime, 0f));
+            this.MoveVertical();
         }
         // Animation
-        this.animator.SetFloat("MoveX", horizontalMovement);
-        this.animator.SetFloat("MoveY", verticalMovement);
+        this.animator.SetFloat("MoveX", this.horizontalMovement);
+        this.animator.SetFloat("MoveY", this.verticalMovement);
+        this.animator.SetBool("PlayerMoving", this.playerMoving);
+        this.animator.SetFloat("LastMoveX", this.lastMove.x);
+        this.animator.SetFloat("LastMoveY", this.lastMove.y);
+    }
+
+    void MoveHorizontal()
+    {
+        transform.Translate(new Vector3(this.horizontalMovement * this.moveSpeed * Time.deltaTime, 0f, 0f));
+        this.playerMoving = true;
+        this.lastMove = new Vector2(this.horizontalMovement, this.verticalMovement);
+    }
+
+    void MoveVertical()
+    {
+        transform.Translate(new Vector3(0f, this.verticalMovement * this.moveSpeed * Time.deltaTime, 0f));
+        this.playerMoving = true;
+        this.lastMove = new Vector2(this.horizontalMovement, this.verticalMovement);
     }
 }
