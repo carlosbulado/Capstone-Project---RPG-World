@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     // Variables
     public float moveSpeed;
     private Animator animator;
+    private Rigidbody2D playerRigidBody;
     private bool playerMoving;
     private Vector2 lastMove;
 
@@ -18,6 +19,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         this.animator = GetComponent<Animator>();
+        this.playerRigidBody = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -39,6 +41,8 @@ public class PlayerController : MonoBehaviour
         {
             this.MoveVertical();
         }
+        // Stop player from moving forever
+        this.StopPlayerIfThereIsNoMovement();
         // Animation
         this.animator.SetFloat("MoveX", this.horizontalMovement);
         this.animator.SetFloat("MoveY", this.verticalMovement);
@@ -49,15 +53,29 @@ public class PlayerController : MonoBehaviour
 
     void MoveHorizontal()
     {
-        transform.Translate(new Vector3(this.horizontalMovement * this.moveSpeed * Time.deltaTime, 0f, 0f));
+        //transform.Translate(new Vector3(this.horizontalMovement * this.moveSpeed * Time.deltaTime, 0f, 0f));
+        this.playerRigidBody.velocity = new Vector2(this.horizontalMovement * this.moveSpeed, this.playerRigidBody.velocity.y);
         this.playerMoving = true;
         this.lastMove = new Vector2(this.horizontalMovement, this.verticalMovement);
     }
 
     void MoveVertical()
     {
-        transform.Translate(new Vector3(0f, this.verticalMovement * this.moveSpeed * Time.deltaTime, 0f));
+        //transform.Translate(new Vector3(0f, this.verticalMovement * this.moveSpeed * Time.deltaTime, 0f));
+        this.playerRigidBody.velocity = new Vector2(this.playerRigidBody.velocity.x, this.verticalMovement * this.moveSpeed);
         this.playerMoving = true;
         this.lastMove = new Vector2(this.horizontalMovement, this.verticalMovement);
+    }
+
+    void StopPlayerIfThereIsNoMovement()
+    {
+        if (this.horizontalMovement < 0.5f && this.horizontalMovement > -0.5f)
+        {
+            this.playerRigidBody.velocity = new Vector2(0f, this.playerRigidBody.velocity.y);
+        }
+        if(this.verticalMovement < 0.5f && this.verticalMovement > -0.5f)
+        {
+            this.playerRigidBody.velocity = new Vector2(this.playerRigidBody.velocity.x, 0f);
+        }
     }
 }
