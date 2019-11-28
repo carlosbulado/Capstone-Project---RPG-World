@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
     {
         this.animator = GetComponent<Animator>();
         this.playerRigidBody = GetComponent<Rigidbody2D>();
+        // This code will make sure that the player will not be destroyed when change scenes
+        DontDestroyOnLoad(transform.gameObject);
     }
 
     // Update is called once per frame
