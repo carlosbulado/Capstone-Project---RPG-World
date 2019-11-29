@@ -15,7 +15,12 @@ public class PlayerController : MonoBehaviour
     private float verticalMovement;
 
     private static bool playerExists;
-    // Variables
+
+    // Status
+    private float health;
+    private int strength;
+    private int agility;
+    private int intelligence;
 
     // Start is called before the first frame update
     void Start()
