@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
 
     private float horizontalMovement;
     private float verticalMovement;
+
+    private static bool playerExists;
     // Variables
 
     // Start is called before the first frame update
@@ -20,8 +22,17 @@ public class PlayerController : MonoBehaviour
     {
         this.animator = GetComponent<Animator>();
         this.playerRigidBody = GetComponent<Rigidbody2D>();
-        // This code will make sure that the player will not be destroyed when change scenes
-        DontDestroyOnLoad(transform.gameObject);
+        // Fix the duplicates of player in the world
+        if(!PlayerController.playerExists)
+        {
+            PlayerController.playerExists = true;
+            // This code will make sure that the player will not be destroyed when change scenes
+            DontDestroyOnLoad(transform.gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     // Update is called once per frame
@@ -80,4 +91,31 @@ public class PlayerController : MonoBehaviour
             this.playerRigidBody.velocity = new Vector2(this.playerRigidBody.velocity.x, 0f);
         }
     }
+
+    public void setPlayerPosition(PlayerPosition position)
+    {
+        switch(position)
+        {
+            case PlayerPosition.Up:
+                this.lastMove = new Vector2(0f, 1f);
+            break;
+            case PlayerPosition.Down:
+                this.lastMove = new Vector2(0f, 0f);
+            break;
+            case PlayerPosition.Left:
+                this.lastMove = new Vector2(-1f, 0f);
+            break;
+            case PlayerPosition.Right:
+                this.lastMove = new Vector2(1f, 1f);
+            break;
+        }
+    }
+}
+
+public enum PlayerPosition
+{
+    Up,
+    Down,
+    Left,
+    Right
 }
