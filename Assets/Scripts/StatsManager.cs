@@ -35,6 +35,7 @@ public class StatsManager : MonoBehaviour
     public int GetMaxHealth() { return this.level * this.strength; }
     public int GetOffense() { return (int)(this.agility * .75); }
     public int GetDefense() { return (int)(this.agility * .75 + this.intelligence * .25); }
+    public int GetCurrentHealth() { return this.currentHealth; }
 
     // Setters
     public void SetLevel(int value) { this.level = value; }
