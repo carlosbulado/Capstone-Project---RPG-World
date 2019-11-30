@@ -6,12 +6,14 @@ public class LoadNewArea : MonoBehaviour
 {
     // Variables
     public string levelToLoad;
+    public string exitPoint;
+    protected PlayerController thePlayer;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        this.thePlayer = FindObjectOfType<PlayerController>();
     }
 
     // Update is called once per frame
@@ -25,6 +27,7 @@ public class LoadNewArea : MonoBehaviour
         if(other.gameObject.name == "Player")
         {
             Application.LoadLevel(this.levelToLoad);
+            this.thePlayer.startPoint = this.exitPoint;
         }
     }
 }

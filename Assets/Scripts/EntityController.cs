@@ -7,6 +7,7 @@ public class EntityController : MonoBehaviour
     // Variables
     public float moveSpeed;
     protected Rigidbody2D myRigidBody;
+    public string startPoint;
 
     // Stats
     protected StatsManager stats;

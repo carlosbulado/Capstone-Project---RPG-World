@@ -197,7 +197,7 @@ GameObject:
   - component: {fileID: 374031457}
   - component: {fileID: 374031458}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: HpSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -306,6 +306,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  startPoint: 
   damageBurst: {fileID: 2124122786615048442, guid: 9965e043d10d340c595535c93cf3e41f,
     type: 3}
   damageText: {fileID: 6657555698269173652, guid: 989e6a9175b7b4a088e91c904099abff,
@@ -501,6 +502,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelToLoad: Inside_House_001_Scene
+  exitPoint: House_001_Entry
 --- !u!1 &781033559
 GameObject:
   m_ObjectHideFlags: 0
@@ -535,6 +537,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  startPoint: 
   damageBurst: {fileID: 2124122786615048442, guid: 9965e043d10d340c595535c93cf3e41f,
     type: 3}
   damageText: {fileID: 6657555698269173652, guid: 989e6a9175b7b4a088e91c904099abff,
@@ -1080,6 +1083,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  startPoint: 
   damageBurst: {fileID: 2124122786615048442, guid: 9965e043d10d340c595535c93cf3e41f,
     type: 3}
   damageText: {fileID: 6657555698269173652, guid: 989e6a9175b7b4a088e91c904099abff,
@@ -1170,7 +1174,7 @@ GameObject:
   - component: {fileID: 1575077460}
   - component: {fileID: 1575077459}
   m_Layer: 5
-  m_Name: Text
+  m_Name: HpText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1410,7 +1414,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1807855681}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.61, y: -2.15, z: 2.6125271}
+  m_LocalPosition: {x: -16.2, y: -3.12, z: 2.6125271}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1429,6 +1433,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   position: 1
+  pointName: House_001_Exit
 --- !u!1 &1876900443
 GameObject:
   m_ObjectHideFlags: 0

@@ -143,6 +143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelToLoad: Main_Scene
+  exitPoint: House_001_Exit
 --- !u!61 &301259288
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -281,6 +282,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f97c62264ecf846ca8d90a4c3b11db10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  position: 0
+  pointName: House_001_Entry
 --- !u!4 &704120840
 Transform:
   m_ObjectHideFlags: 0
@@ -289,7 +292,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 704120838}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.63, y: -3.77, z: 2.6132812}
+  m_LocalPosition: {x: -1.08, y: -3.01, z: 2.6132812}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
