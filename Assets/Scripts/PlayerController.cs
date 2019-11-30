@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : EntityController
 {
     // Variables
-    public float moveSpeed;
     protected Animator animator;
-    protected Rigidbody2D playerRigidBody;
     protected bool playerMoving;
     protected bool playerAttacking;
     public float attackTime;
@@ -19,20 +17,14 @@ public class PlayerController : MonoBehaviour
 
     protected static bool playerExists;
 
-    // Status
-    protected StatsManager stats;
-
-    // Getters
-    public StatsManager GetStats() { return this.stats; }
-
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
         this.stats = new StatsManager(1, 1, transform.gameObject);
         this.stats.Start();
 
         this.animator = GetComponent<Animator>();
-        this.playerRigidBody = GetComponent<Rigidbody2D>();
+        this.myRigidBody = GetComponent<Rigidbody2D>();
         // Fix the duplicates of player in the world
         if(!PlayerController.playerExists)
         {
@@ -44,10 +36,11 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        base.UpdateObjects();
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
         // Every frame the player movement is false
         this.playerMoving = false;
@@ -74,7 +67,7 @@ public class PlayerController : MonoBehaviour
             {
                 this.attackTimeCounter = this.attackTime;
                 this.playerAttacking = true;
-                this.playerRigidBody.velocity = Vector2.zero;
+                this.myRigidBody.velocity = Vector2.zero;
                 this.animator.SetBool("PlayerAttacking", true);
             }
         }
@@ -103,7 +96,7 @@ public class PlayerController : MonoBehaviour
     void MoveHorizontal()
     {
         //transform.Translate(new Vector3(this.horizontalMovement * this.moveSpeed * Time.deltaTime, 0f, 0f));
-        this.playerRigidBody.velocity = new Vector2(this.horizontalMovement * this.moveSpeed, this.playerRigidBody.velocity.y);
+        this.myRigidBody.velocity = new Vector2(this.horizontalMovement * this.moveSpeed, this.myRigidBody.velocity.y);
         this.playerMoving = true;
         this.lastMove = new Vector2(this.horizontalMovement, this.verticalMovement);
     }
@@ -111,7 +104,7 @@ public class PlayerController : MonoBehaviour
     void MoveVertical()
     {
         //transform.Translate(new Vector3(0f, this.verticalMovement * this.moveSpeed * Time.deltaTime, 0f));
-        this.playerRigidBody.velocity = new Vector2(this.playerRigidBody.velocity.x, this.verticalMovement * this.moveSpeed);
+        this.myRigidBody.velocity = new Vector2(this.myRigidBody.velocity.x, this.verticalMovement * this.moveSpeed);
         this.playerMoving = true;
         this.lastMove = new Vector2(this.horizontalMovement, this.verticalMovement);
     }
@@ -120,11 +113,11 @@ public class PlayerController : MonoBehaviour
     {
         if (this.horizontalMovement < 0.5f && this.horizontalMovement > -0.5f)
         {
-            this.playerRigidBody.velocity = new Vector2(0f, this.playerRigidBody.velocity.y);
+            this.myRigidBody.velocity = new Vector2(0f, this.myRigidBody.velocity.y);
         }
         if(this.verticalMovement < 0.5f && this.verticalMovement > -0.5f)
         {
-            this.playerRigidBody.velocity = new Vector2(this.playerRigidBody.velocity.x, 0f);
+            this.myRigidBody.velocity = new Vector2(this.myRigidBody.velocity.x, 0f);
         }
     }
 

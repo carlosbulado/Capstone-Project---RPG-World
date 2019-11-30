@@ -96,6 +96,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  damageBurst: {fileID: 2124122786615048442, guid: 9965e043d10d340c595535c93cf3e41f,
+    type: 3}
+  damageText: {fileID: 6657555698269173652, guid: 989e6a9175b7b4a088e91c904099abff,
+    type: 3}
+  attackTime: 0
 --- !u!95 &4282281006465302077
 Animator:
   serializedVersion: 3

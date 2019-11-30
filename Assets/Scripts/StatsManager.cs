@@ -13,12 +13,15 @@ public class StatsManager : MonoBehaviour
     protected int level;
     protected int minLevel;
     protected int maxLevel;
+    protected GameObject damageBurst;
+    protected GameObject damageNumbers;
 
-    public GameObject damageBurst;
+    public StatsManager() : base() { }
 
-    public StatsManager() : base()
+    public StatsManager(GameObject damageBurst, GameObject damageText) : this()
     {
-        this.damageBurst = GameObject.Find("DamageBurst");
+        this.damageBurst = damageBurst;
+        this.damageNumbers = damageNumbers;
     }
 
     public StatsManager (int minLevel, int maxLevel, GameObject gameObject) : this()
@@ -38,6 +41,8 @@ public class StatsManager : MonoBehaviour
     public void SetAgility(int value) { this.agility = value; }
     public void SetStrength(int value) { this.strength = value; }
     public void SetIntelligence(int value) { this.intelligence = value; }
+    public void SetDamageBurst(GameObject value) { this.damageBurst = value; }
+    public void SetDamageText(GameObject value) { this.damageNumbers = value; }
 
     // Start is called before the first frame update
     public void Start()
@@ -57,22 +62,25 @@ public class StatsManager : MonoBehaviour
 
     public void TryAttack(StatsManager other)
     {
-        switch(this.DidHit(other))
+        int damage = 0;
+        HitStatus status = this.DidHit(other);
+        switch(status)
         {
             case HitStatus.EpicFail:
-                this.EpicFail();
+                damage = this.EpicFail();
             break;
             case HitStatus.FacePalm:
                 // Missed
             break;
             case HitStatus.NotBad:
-                this.RollDamage(other);
+                damage = this.RollDamage(other);
             break;
             case HitStatus.YoureAwesome:
-                this.RollDamage(other);
-                this.RollDamage(other);
+                damage = this.RollDamage(other);
+                damage += this.RollDamage(other);
             break;
         }
+        this.ShowDamageBurst(status, damage);
     }
 
     public HitStatus DidHit(StatsManager other)
@@ -96,10 +104,11 @@ public class StatsManager : MonoBehaviour
         }
     }
 
-    public void RollDamage(StatsManager whoWillTakeDamage)
+    public int RollDamage(StatsManager whoWillTakeDamage)
     {
         int damage = Dice.Roll(this.strength);
         whoWillTakeDamage.GotHit(damage);
+        return damage;
     }
 
     public void GotHit(int damage)
@@ -114,14 +123,15 @@ public class StatsManager : MonoBehaviour
         this.currentHealth = this.GetMaxHealth();
     }
 
-    public void EpicFail()
+    public int EpicFail()
     {
         int dice = Dice.Roll(4);
         if(dice == 1)
         {
             // TODO: Message - "<sprite> epic fail and hit itself by <damage>"
-            this.RollDamage(this);
+            return this.RollDamage(this);
         }
+        return 0;
     }
 
     private void Init()
@@ -137,5 +147,13 @@ public class StatsManager : MonoBehaviour
                 this.SetIntelligence(Dice.Roll(8));
             }
         }
+    }
+
+    private void ShowDamageBurst(HitStatus status, int damage = 0)
+    {
+        var clone = (GameObject)Instantiate(this.damageNumbers, this.gameObject.transform.position, Quaternion.Euler(Vector3.zero));
+        FloatingNumbers damageText = clone.GetComponent<FloatingNumbers>();
+        damageText.SetDamageDone(damage);
+        damageText.SetHitStatus(status);
     }
 }

@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class EnemyController : MonoBehaviour
+public abstract class EnemyController : EntityController
 {
     // Variable
-    public float moveSpeed;
-    protected Rigidbody2D myRigidBody;
     protected bool moving;
     public float timeBetweenMove;
     protected float timeBetweenMoveCounter;
@@ -14,15 +12,9 @@ public abstract class EnemyController : MonoBehaviour
     protected float timeToMoveCounter;
     protected Vector3 moveDirection;
     protected PlayerController thePlayer;
-    
-    // Status
-    protected StatsManager stats;
-    
-    // Getters
-    public StatsManager GetStats() { return this.stats; }
 
     // Start is called before the first frame update
-    protected void Start()
+    protected override  void Start()
     {
         this.myRigidBody = GetComponent<Rigidbody2D>();
 
@@ -33,10 +25,11 @@ public abstract class EnemyController : MonoBehaviour
 
         this.InitStats();
         this.AfterStart();
+        base.UpdateObjects();
     }
 
     // Update is called once per frame
-    protected void Update()
+    protected override  void Update()
     {
         this.Move();
         this.AfterUpdate();
