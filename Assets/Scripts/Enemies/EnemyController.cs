@@ -16,10 +16,10 @@ public abstract class EnemyController : MonoBehaviour
     protected PlayerController thePlayer;
     
     // Status
-    private float health;
-    private int strength;
-    private int agility;
-    private int intelligence;
+    protected StatsManager stats;
+    
+    // Getters
+    public StatsManager GetStats() { return this.stats; }
 
     // Start is called before the first frame update
     protected void Start()
@@ -31,6 +31,7 @@ public abstract class EnemyController : MonoBehaviour
 
         this.thePlayer = FindObjectOfType<PlayerController>();
 
+        this.InitStats();
         this.AfterStart();
     }
 
@@ -58,9 +59,14 @@ public abstract class EnemyController : MonoBehaviour
             this.Attack();
         }
     }
+    
+    protected void Attack()
+    {
+        this.stats.TryAttack(this.thePlayer.GetStats());
+    }
 
     protected abstract void AfterStart();
     protected abstract void AfterUpdate();
     protected abstract void Move();
-    protected abstract void Attack();
+    protected abstract void InitStats();
 }

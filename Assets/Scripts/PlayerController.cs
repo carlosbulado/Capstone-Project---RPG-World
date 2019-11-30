@@ -6,25 +6,28 @@ public class PlayerController : MonoBehaviour
 {
     // Variables
     public float moveSpeed;
-    private Animator animator;
-    private Rigidbody2D playerRigidBody;
-    private bool playerMoving;
-    private Vector2 lastMove;
+    protected Animator animator;
+    protected Rigidbody2D playerRigidBody;
+    protected bool playerMoving;
+    protected Vector2 lastMove;
 
-    private float horizontalMovement;
-    private float verticalMovement;
+    protected float horizontalMovement;
+    protected float verticalMovement;
 
-    private static bool playerExists;
+    protected static bool playerExists;
 
     // Status
-    private float health;
-    private int strength;
-    private int agility;
-    private int intelligence;
+    protected StatsManager stats;
+
+    // Getters
+    public StatsManager GetStats() { return this.stats; }
 
     // Start is called before the first frame update
     void Start()
     {
+        this.stats = new StatsManager(1, 1, transform.gameObject);
+        this.stats.Start();
+
         this.animator = GetComponent<Animator>();
         this.playerRigidBody = GetComponent<Rigidbody2D>();
         // Fix the duplicates of player in the world

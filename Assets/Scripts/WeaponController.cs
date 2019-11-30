@@ -20,7 +20,7 @@ public class WeaponController : MonoBehaviour
     {
         if(other.gameObject.tag == "Enemy")
         {
-            Destroy(other.gameObject);
+            Destroy(other.gameObject); 
         }
     }
 }
