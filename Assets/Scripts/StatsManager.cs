@@ -14,8 +14,14 @@ public class StatsManager : MonoBehaviour
     protected int minLevel;
     protected int maxLevel;
 
-    public StatsManager() : base() { }
-    public StatsManager (int minLevel, int maxLevel, GameObject gameObject) : base()
+    public GameObject damageBurst;
+
+    public StatsManager() : base()
+    {
+        this.damageBurst = GameObject.Find("DamageBurst");
+    }
+
+    public StatsManager (int minLevel, int maxLevel, GameObject gameObject) : this()
     {
         this.minLevel = minLevel;
         this.maxLevel = maxLevel;
@@ -36,7 +42,7 @@ public class StatsManager : MonoBehaviour
     // Start is called before the first frame update
     public void Start()
     {
-        if(this.level <= 0) this.Init();
+        this.Init();
         this.currentHealth = this.GetMaxHealth();
     }
 
@@ -99,6 +105,7 @@ public class StatsManager : MonoBehaviour
     public void GotHit(int damage)
     {
         this.currentHealth -= damage;
+        Instantiate(this.damageBurst, this.gameObject.transform.position, this.gameObject.transform.rotation);
         if(this.currentHealth <= 0) Destroy(this.gameObject);
     }
 
@@ -119,13 +126,16 @@ public class StatsManager : MonoBehaviour
 
     private void Init()
     {
-        int level = Dice.Roll(this.minLevel, this.maxLevel);
-        this.SetLevel(level);
-        for (int i = 0; i < level; i++)
+        if(this.level <= 0) 
         {
-            this.SetStrength(Dice.Roll(8));
-            this.SetAgility(Dice.Roll(8));
-            this.SetIntelligence(Dice.Roll(8));
+            int level = Dice.Roll(this.minLevel, this.maxLevel);
+            this.SetLevel(level);
+            for (int i = 0; i < level; i++)
+            {
+                this.SetStrength(Dice.Roll(8));
+                this.SetAgility(Dice.Roll(8));
+                this.SetIntelligence(Dice.Roll(8));
+            }
         }
     }
 }
