@@ -9,6 +9,9 @@ public class PlayerController : MonoBehaviour
     protected Animator animator;
     protected Rigidbody2D playerRigidBody;
     protected bool playerMoving;
+    protected bool playerAttacking;
+    public float attackTime;
+    protected float attackTimeCounter;
     protected Vector2 lastMove;
 
     protected float horizontalMovement;
@@ -48,20 +51,45 @@ public class PlayerController : MonoBehaviour
     {
         // Every frame the player movement is false
         this.playerMoving = false;
-        // Get the movement from human player
-        this.horizontalMovement = Input.GetAxisRaw("Horizontal");
-        this.verticalMovement = Input.GetAxisRaw("Vertical");
-        // Last Movement
-        // Move the player left, right
-        if (this.horizontalMovement > 0.5f || this.horizontalMovement < -0.5f)
+
+        if(!this.playerAttacking)
         {
-            this.MoveHorizontal();
+            // Get the movement from human player
+            this.horizontalMovement = Input.GetAxisRaw("Horizontal");
+            this.verticalMovement = Input.GetAxisRaw("Vertical");
+            // Last Movement
+            // Move the player left, right
+            if (this.horizontalMovement > 0.5f || this.horizontalMovement < -0.5f)
+            {
+                this.MoveHorizontal();
+            }
+            // Move the player up, down
+            if(this.verticalMovement > 0.5f || this.verticalMovement < -0.5f)
+            {
+                this.MoveVertical();
+            }
+
+            // Attack Movement
+            if(Input.GetKeyDown(KeyCode.J))
+            {
+                this.attackTimeCounter = this.attackTime;
+                this.playerAttacking = true;
+                this.playerRigidBody.velocity = Vector2.zero;
+                this.animator.SetBool("PlayerAttacking", true);
+            }
         }
-        // Move the player up, down
-        if(this.verticalMovement > 0.5f || this.verticalMovement < -0.5f)
+
+        // Control if player is attacking or not
+        if(this.attackTimeCounter > 0)
         {
-            this.MoveVertical();
+            this.attackTimeCounter -= Time.deltaTime;
         }
+        else
+        {
+            this.playerAttacking = false;
+            this.animator.SetBool("PlayerAttacking", false);
+        }
+
         // Stop player from moving forever
         this.StopPlayerIfThereIsNoMovement();
         // Animation
