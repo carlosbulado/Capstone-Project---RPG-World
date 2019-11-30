@@ -70,6 +70,15 @@ public class PlayerController : EntityController
                 this.myRigidBody.velocity = Vector2.zero;
                 this.animator.SetBool("PlayerAttacking", true);
             }
+
+            if(Mathf.Abs(this.horizontalMovement) > 0.5f && Mathf.Abs(this.verticalMovement) > 0.5f)
+            {
+                this.currentMoveSpeed = this.moveSpeed * this.diagnoalMoveModifier;
+            }
+            else
+            {
+                this.currentMoveSpeed = this.moveSpeed;
+            }
         }
 
         // Control if player is attacking or not
@@ -96,7 +105,7 @@ public class PlayerController : EntityController
     void MoveHorizontal()
     {
         //transform.Translate(new Vector3(this.horizontalMovement * this.moveSpeed * Time.deltaTime, 0f, 0f));
-        this.myRigidBody.velocity = new Vector2(this.horizontalMovement * this.moveSpeed, this.myRigidBody.velocity.y);
+        this.myRigidBody.velocity = new Vector2(this.horizontalMovement * this.currentMoveSpeed, this.myRigidBody.velocity.y);
         this.playerMoving = true;
         this.lastMove = new Vector2(this.horizontalMovement, this.verticalMovement);
     }
@@ -104,7 +113,7 @@ public class PlayerController : EntityController
     void MoveVertical()
     {
         //transform.Translate(new Vector3(0f, this.verticalMovement * this.moveSpeed * Time.deltaTime, 0f));
-        this.myRigidBody.velocity = new Vector2(this.myRigidBody.velocity.x, this.verticalMovement * this.moveSpeed);
+        this.myRigidBody.velocity = new Vector2(this.myRigidBody.velocity.x, this.verticalMovement * this.currentMoveSpeed);
         this.playerMoving = true;
         this.lastMove = new Vector2(this.horizontalMovement, this.verticalMovement);
     }
