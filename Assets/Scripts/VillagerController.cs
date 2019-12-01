@@ -5,7 +5,6 @@ using UnityEngine;
 public class VillagerController : EntityController
 {
     // Variables
-    protected int moveDirection;
 
     // Start is called before the first frame update
     protected override void Start()
@@ -23,7 +22,7 @@ public class VillagerController : EntityController
         {
             this.timeToMoveCounter -= Time.deltaTime;
 
-            switch(this.moveDirection)
+            switch(this.moveDirectionNumber)
             {
                 case 0:
                     this.myRigidBody.velocity = new Vector2(0f, this.moveSpeed);
@@ -39,11 +38,7 @@ public class VillagerController : EntityController
                 break;
             }
             
-            if(this.timeToMoveCounter < 0)
-            {
-                this.moving = false;
-                this.timeBetweenMoveCounter = this.timeBetweenMove;
-            }
+            if(this.timeToMoveCounter < 0) { this.StopMoving(); }
         }
         else
         {
@@ -55,12 +50,5 @@ public class VillagerController : EntityController
                 this.timeBetweenMoveCounter = this.timeBetweenMove;
             }
         }
-    }
-
-    public void ChooseDirection()
-    {
-        this.moveDirection = Random.Range(0, 4);
-        this.moving = true;
-        this.timeToMoveCounter = this.timeToMove;
     }
 }

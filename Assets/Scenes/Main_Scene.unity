@@ -356,6 +356,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 390546845}
   m_CullTransparentMesh: 0
+--- !u!1 &453090787
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 453090789}
+  - component: {fileID: 453090788}
+  m_Layer: 0
+  m_Name: Village_001_Walk_Area
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!61 &453090788
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 453090787}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!4 &453090789
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 453090787}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -12.88, y: -0.12, z: 15.957628}
+  m_LocalScale: {x: 11.299376, y: 9.257031, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &601545104
 GameObject:
   m_ObjectHideFlags: 0
@@ -394,6 +451,7 @@ MonoBehaviour:
   startPoint: 
   timeBetweenMove: 2
   timeToMove: 1
+  walkZone: {fileID: 0}
   damageBurst: {fileID: 2124122786615048442, guid: 9965e043d10d340c595535c93cf3e41f,
     type: 3}
   damageText: {fileID: 6657555698269173652, guid: 989e6a9175b7b4a088e91c904099abff,
@@ -704,6 +762,7 @@ MonoBehaviour:
   startPoint: 
   timeBetweenMove: 2
   timeToMove: 1
+  walkZone: {fileID: 0}
   damageBurst: {fileID: 2124122786615048442, guid: 9965e043d10d340c595535c93cf3e41f,
     type: 3}
   damageText: {fileID: 6657555698269173652, guid: 989e6a9175b7b4a088e91c904099abff,
@@ -1302,9 +1361,12 @@ MonoBehaviour:
   diagnoalMoveModifier: 0
   startPoint: 
   timeBetweenMove: 1
-  timeToMove: 3
-  damageBurst: {fileID: 0}
-  damageText: {fileID: 0}
+  timeToMove: 2
+  walkZone: {fileID: 453090788}
+  damageBurst: {fileID: 2124122786615048442, guid: 9965e043d10d340c595535c93cf3e41f,
+    type: 3}
+  damageText: {fileID: 6657555698269173652, guid: 989e6a9175b7b4a088e91c904099abff,
+    type: 3}
 --- !u!1 &1320996823
 GameObject:
   m_ObjectHideFlags: 0
@@ -1542,6 +1604,7 @@ MonoBehaviour:
   startPoint: 
   timeBetweenMove: 2
   timeToMove: 1
+  walkZone: {fileID: 0}
   damageBurst: {fileID: 2124122786615048442, guid: 9965e043d10d340c595535c93cf3e41f,
     type: 3}
   damageText: {fileID: 6657555698269173652, guid: 989e6a9175b7b4a088e91c904099abff,
