@@ -60,9 +60,9 @@ public class UIManager : MonoBehaviour
         this.playerNameText.text = newText;
 
         string output = "";
-        for (int i = UIManager.outputMessages.Count - 1 ; i >= UIManager.outputMessages.Count - 3 && i > 0 ; i--)
+        for (int i = 1 ; i < 5 && UIManager.outputMessages.Count > i ; i++)
         {
-            output = UIManager.outputMessages[i] + "\n" + output;
+            output = UIManager.outputMessages[UIManager.outputMessages.Count - i] + "\n" + output;
         }
         this.gameOutputText.text = output;
     }

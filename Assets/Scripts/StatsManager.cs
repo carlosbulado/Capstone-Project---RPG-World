@@ -114,6 +114,7 @@ public class StatsManager : MonoBehaviour
     public void TryAttack(StatsManager other)
     {
         int damage = 0;
+        string messageWhenTryingAttack = string.Empty;
         HitStatus status = this.DidHit(other);
         switch(status)
         {
@@ -125,13 +126,17 @@ public class StatsManager : MonoBehaviour
                 UIManager.outputMessages.Add(string.Format("{0} missed {1}", this.GetName(), other.GetName()));
             break;
             case HitStatus.NotBad:
+                messageWhenTryingAttack += string.Format("{0} hit {1}", this.GetName(), other.GetName());
+                UIManager.outputMessages.Add(messageWhenTryingAttack);
                 damage = this.RollDamage(other);
-                UIManager.outputMessages.Add(string.Format("{0} hit {1} by {2}", this.GetName(), other.GetName(), damage));
+                UIManager.outputMessages[UIManager.outputMessages.Count - 1] += string.Format(" by {0}", damage);
             break;
             case HitStatus.YoureAwesome:
+                messageWhenTryingAttack += string.Format("{0} critically hit {1}", this.GetName(), other.GetName());
+                UIManager.outputMessages.Add(messageWhenTryingAttack);
                 damage = this.RollDamage(other);
                 damage += this.RollDamage(other);
-                UIManager.outputMessages.Add(string.Format("{0} critically hit {1} by {2}", this.GetName(), other.GetName(), damage));
+                UIManager.outputMessages[UIManager.outputMessages.Count - 1] += string.Format(" by {0}", damage);
             break;
         }
         this.ShowDamageBurst(status, damage);
@@ -193,7 +198,7 @@ public class StatsManager : MonoBehaviour
     public int EpicFail()
     {
         int dice = Dice.Roll(4);
-        if(dice == 1)
+        if(dice == 2)
         {
             int damage = this.RollDamage(this);
             UIManager.outputMessages.Add(string.Format("{0} roll an epic fail and hit itself by {1} damage", this.GetName(), damage));
@@ -228,6 +233,7 @@ public class StatsManager : MonoBehaviour
     public void AddExperience(int expToAdd)
     {
         this.experience += expToAdd;
+        UIManager.outputMessages.Add(string.Format("{0} got {1} experience!", this.GetName(), expToAdd));
     }
 
     public int ExperienceYeld()
@@ -244,13 +250,13 @@ public class StatsManager : MonoBehaviour
         while (this.experience > this.level * 2)
         {
             this.LevelUp();
-            UIManager.outputMessages.Add(string.Format("{0} level up! Level {1}", this.GetName(), this.GetLevel()));
         }
     }
 
     private void LevelUp()
     {
         this.level += 1;
+        UIManager.outputMessages.Add(string.Format("{0} level up! Level {1}", this.GetName(), this.GetLevel()));
         this.LevelUpStats();
         this.RecoverFullHealth();
     }
