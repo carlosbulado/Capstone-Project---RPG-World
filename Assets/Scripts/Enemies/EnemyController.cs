@@ -12,6 +12,7 @@ public abstract class EnemyController : EntityController
     protected float timeToMoveCounter;
     protected Vector3 moveDirection;
     protected PlayerController thePlayer;
+    public EnemyType type;
 
     // Start is called before the first frame update
     protected override  void Start()
@@ -26,6 +27,10 @@ public abstract class EnemyController : EntityController
         this.InitStats();
         this.AfterStart();
         base.UpdateObjects();
+
+        this.GetStats().SetEnemyType(this.type);
+
+        this.GetStats().SetName(this.NameString());
     }
 
     // Update is called once per frame
@@ -33,6 +38,7 @@ public abstract class EnemyController : EntityController
     {
         this.Move();
         this.AfterUpdate();
+        this.stats.Update();
     }
 
     protected void RenewTimeBetweenMoveCounter()
@@ -56,6 +62,15 @@ public abstract class EnemyController : EntityController
     protected void Attack()
     {
         this.stats.TryAttack(this.thePlayer.GetStats());
+    }
+
+    public override string NameString()
+    {
+        switch(this.type)
+        {
+            case EnemyType.Slime: return "Slime";
+        }
+        return "";
     }
 
     protected abstract void AfterStart();

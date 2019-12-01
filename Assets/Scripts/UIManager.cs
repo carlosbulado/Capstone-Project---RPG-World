@@ -8,8 +8,15 @@ public class UIManager : MonoBehaviour
     // Variables
     public Slider healthBar;
     public Text healthText;
+    public Text strText;
+    public Text agiText;
+    public Text intText;
+    public Text levelText;
+    public Text playerNameText;
+    public Text gameOutputText;
     protected PlayerController thePlayer;
     private static bool uiExists;
+    public static ArrayList outputMessages = new ArrayList();
 
     // Start is called before the first frame update
     void Start()
@@ -34,7 +41,29 @@ public class UIManager : MonoBehaviour
         this.healthBar.maxValue = this.thePlayer.GetStats().GetMaxHealth();
         this.healthBar.value = this.thePlayer.GetStats().GetCurrentHealth();
 
-        string hpText = "HP: " + this.healthBar.value + "/" + this.healthBar.maxValue;
-        this.healthText.text = hpText;
+        string newText = "HP: " + this.healthBar.value + "/" + this.healthBar.maxValue;
+        this.healthText.text = newText;
+        
+        newText = "STR: " + this.thePlayer.GetStats().GetStrength();
+        this.strText.text = newText;
+        
+        newText = "AGI: " + this.thePlayer.GetStats().GetAgility();
+        this.agiText.text = newText;
+        
+        newText = "INT: " + this.thePlayer.GetStats().GetIntelligence();
+        this.intText.text = newText;
+        
+        newText = "Level: " + this.thePlayer.GetStats().GetLevel();
+        this.levelText.text = newText;
+        
+        newText = "" + this.thePlayer.GetStats().GetLevel();
+        this.playerNameText.text = newText;
+
+        string output = "";
+        for (int i = UIManager.outputMessages.Count - 1 ; i >= UIManager.outputMessages.Count - 3 && i > 0 ; i--)
+        {
+            output = UIManager.outputMessages[i] + "\n" + output;
+        }
+        this.gameOutputText.text = output;
     }
 }

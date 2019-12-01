@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EntityController : MonoBehaviour
+public abstract class EntityController : MonoBehaviour
 {
     // Variables
     public float moveSpeed;
@@ -31,4 +31,6 @@ public class EntityController : MonoBehaviour
         this.stats.SetDamageBurst(this.damageBurst);
         this.stats.SetDamageText(this.damageText);
     }
+
+    public abstract string NameString();
 }

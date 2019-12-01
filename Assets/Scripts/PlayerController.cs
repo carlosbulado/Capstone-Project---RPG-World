@@ -37,6 +37,8 @@ public class PlayerController : EntityController
             Destroy(gameObject);
         }
         base.UpdateObjects();
+
+        this.GetStats().SetName(this.NameString());
     }
 
     // Update is called once per frame
@@ -100,6 +102,8 @@ public class PlayerController : EntityController
         this.animator.SetBool("PlayerMoving", this.playerMoving);
         this.animator.SetFloat("LastMoveX", this.lastMove.x);
         this.animator.SetFloat("LastMoveY", this.lastMove.y);
+
+        this.stats.Update();
     }
 
     void MoveHorizontal()
@@ -147,6 +151,11 @@ public class PlayerController : EntityController
                 this.lastMove = new Vector2(1f, 1f);
             break;
         }
+    }
+
+    public override string NameString()
+    {
+        return this.GetStats().GetName();
     }
 }
 
