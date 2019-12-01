@@ -20,7 +20,7 @@ public class PlayerController : EntityController
     // Start is called before the first frame update
     protected override void Start()
     {
-        this.stats = new StatsManager(1, 1, transform.gameObject);
+        this.stats = new StatsManager(1, 1, transform.gameObject, GetComponent<SpriteRenderer>());
         this.stats.Start();
 
         this.animator = GetComponent<Animator>();

@@ -6,6 +6,7 @@ public class StatsManager : MonoBehaviour
 {
     // Variables
     protected GameObject gameObject;
+    protected SpriteRenderer spriteRenderer;
     protected int currentHealth;
     protected string name;
     protected int strength;
@@ -19,9 +20,14 @@ public class StatsManager : MonoBehaviour
     protected GameObject damageNumbers;
     protected EnemyType enemyType;
 
+    protected bool flashAfterTakingDamage;
+    public float flashAfterTakingDamageLength;
+    public float flashAfterTakingDamageCounter;
+
     public StatsManager() : base()
     {
         this.name = "Alex Kid";
+        this.flashAfterTakingDamageLength = 1;
     }
 
     public StatsManager(GameObject damageBurst, GameObject damageText) : this()
@@ -30,11 +36,12 @@ public class StatsManager : MonoBehaviour
         this.damageNumbers = damageNumbers;
     }
 
-    public StatsManager (int minLevel, int maxLevel, GameObject gameObject) : this()
+    public StatsManager (int minLevel, int maxLevel, GameObject gameObject, SpriteRenderer spriteRenderer) : this()
     {
         this.minLevel = minLevel;
         this.maxLevel = maxLevel;
         this.gameObject = gameObject;
+        this.spriteRenderer = spriteRenderer;
     }
 
     // Getters
@@ -58,6 +65,7 @@ public class StatsManager : MonoBehaviour
     public void SetDamageText(GameObject value) { this.damageNumbers = value; }
     public void SetEnemyType(EnemyType value) { this.enemyType = value; }
     public void SetName(string value) { this.name = value; }
+    public void SetFlashLength(float value) { this.flashAfterTakingDamageLength = value; }
 
     // Start is called before the first frame update
     public void Start()
@@ -77,6 +85,29 @@ public class StatsManager : MonoBehaviour
         if(this.gameObject.name == "Player")
         {
             this.TryToLevelUp();
+        }
+
+        if(this.flashAfterTakingDamage)
+        {
+            if(this.flashAfterTakingDamageCounter > this.flashAfterTakingDamageLength * .66f)
+            {
+                this.spriteRenderer.color = new Color(this.spriteRenderer.color.r, this.spriteRenderer.color.g, this.spriteRenderer.color.b, 0f);
+            }
+            else if(this.flashAfterTakingDamageCounter > this.flashAfterTakingDamageLength * .33f)
+            {
+                this.spriteRenderer.color = new Color(this.spriteRenderer.color.r, this.spriteRenderer.color.g, this.spriteRenderer.color.b, 1f);
+            }
+            else if(this.flashAfterTakingDamageCounter > 0)
+            {
+                this.spriteRenderer.color = new Color(this.spriteRenderer.color.r, this.spriteRenderer.color.g, this.spriteRenderer.color.b, 0f);
+            }
+            else
+            {
+                this.spriteRenderer.color = new Color(this.spriteRenderer.color.r, this.spriteRenderer.color.g, this.spriteRenderer.color.b, 1f);
+                this.flashAfterTakingDamage = false;
+            }
+
+            this.flashAfterTakingDamageCounter -= Time.deltaTime;
         }
     }
 
@@ -104,6 +135,11 @@ public class StatsManager : MonoBehaviour
             break;
         }
         this.ShowDamageBurst(status, damage);
+        if(damage > 0)
+        {
+            other.flashAfterTakingDamage = true;
+            other.flashAfterTakingDamageCounter = other.flashAfterTakingDamageLength;
+        }
     }
 
     public HitStatus DidHit(StatsManager other)

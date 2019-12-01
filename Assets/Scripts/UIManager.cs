@@ -56,7 +56,7 @@ public class UIManager : MonoBehaviour
         newText = "Level: " + this.thePlayer.GetStats().GetLevel();
         this.levelText.text = newText;
         
-        newText = "" + this.thePlayer.GetStats().GetLevel();
+        newText = "" + this.thePlayer.GetStats().GetName();
         this.playerNameText.text = newText;
 
         string output = "";
