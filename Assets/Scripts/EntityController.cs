@@ -10,6 +10,12 @@ public abstract class EntityController : MonoBehaviour
     public float diagnoalMoveModifier;
     protected Rigidbody2D myRigidBody;
     public string startPoint;
+    protected bool moving;
+    public float timeBetweenMove;
+    protected float timeBetweenMoveCounter;
+    public float timeToMove;
+    protected float timeToMoveCounter;
+    protected Vector3 moveDirection;
 
     // Stats
     protected StatsManager stats;
@@ -21,7 +27,13 @@ public abstract class EntityController : MonoBehaviour
     public StatsManager GetStats() { return this.stats; }
 
     // Start is called before the first frame update
-    protected virtual void Start() { }
+    protected virtual void Start()
+    {
+        this.myRigidBody = GetComponent<Rigidbody2D>();
+
+        this.timeBetweenMoveCounter = this.timeBetweenMove;
+        this.timeToMoveCounter = this.timeToMove;
+    }
 
     // Update is called once per frame
     protected virtual void Update() { }
@@ -31,6 +43,4 @@ public abstract class EntityController : MonoBehaviour
         this.stats.SetDamageBurst(this.damageBurst);
         this.stats.SetDamageText(this.damageText);
     }
-
-    public abstract string NameString();
 }

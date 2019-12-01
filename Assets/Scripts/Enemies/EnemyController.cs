@@ -5,19 +5,13 @@ using UnityEngine;
 public abstract class EnemyController : EntityController
 {
     // Variable
-    protected bool moving;
-    public float timeBetweenMove;
-    protected float timeBetweenMoveCounter;
-    public float timeToMove;
-    protected float timeToMoveCounter;
-    protected Vector3 moveDirection;
     protected PlayerController thePlayer;
     public EnemyType type;
 
     // Start is called before the first frame update
     protected override  void Start()
     {
-        this.myRigidBody = GetComponent<Rigidbody2D>();
+        base.Start();
 
         this.RenewTimeBetweenMoveCounter();
         this.RenewTimeToMoveCounter();
@@ -30,12 +24,14 @@ public abstract class EnemyController : EntityController
 
         this.GetStats().SetEnemyType(this.type);
 
-        this.GetStats().SetName(this.NameString());
+        this.GetStats().SetName(this.Name());
+        this.GetStats().SetFlashLength(.5f);
     }
 
     // Update is called once per frame
     protected override  void Update()
     {
+        base.Update();
         this.Move();
         this.AfterUpdate();
         this.stats.Update();
@@ -64,7 +60,7 @@ public abstract class EnemyController : EntityController
         this.stats.TryAttack(this.thePlayer.GetStats());
     }
 
-    public override string NameString()
+    public string Name()
     {
         switch(this.type)
         {

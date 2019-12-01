@@ -6,7 +6,6 @@ public class PlayerController : EntityController
 {
     // Variables
     protected Animator animator;
-    protected bool playerMoving;
     protected bool playerAttacking;
     public float attackTime;
     protected float attackTimeCounter;
@@ -20,11 +19,11 @@ public class PlayerController : EntityController
     // Start is called before the first frame update
     protected override void Start()
     {
+        base.Start();
         this.stats = new StatsManager(1, 1, transform.gameObject, GetComponent<SpriteRenderer>());
         this.stats.Start();
 
         this.animator = GetComponent<Animator>();
-        this.myRigidBody = GetComponent<Rigidbody2D>();
         // Fix the duplicates of player in the world
         if(!PlayerController.playerExists)
         {
@@ -37,15 +36,14 @@ public class PlayerController : EntityController
             Destroy(gameObject);
         }
         base.UpdateObjects();
-
-        this.GetStats().SetName(this.NameString());
     }
 
     // Update is called once per frame
     protected override void Update()
     {
+        base.Update();
         // Every frame the player movement is false
-        this.playerMoving = false;
+        this.moving = false;
 
         if(!this.playerAttacking)
         {
@@ -99,7 +97,7 @@ public class PlayerController : EntityController
         // Animation
         this.animator.SetFloat("MoveX", this.horizontalMovement);
         this.animator.SetFloat("MoveY", this.verticalMovement);
-        this.animator.SetBool("PlayerMoving", this.playerMoving);
+        this.animator.SetBool("PlayerMoving", this.moving);
         this.animator.SetFloat("LastMoveX", this.lastMove.x);
         this.animator.SetFloat("LastMoveY", this.lastMove.y);
 
@@ -110,7 +108,7 @@ public class PlayerController : EntityController
     {
         //transform.Translate(new Vector3(this.horizontalMovement * this.moveSpeed * Time.deltaTime, 0f, 0f));
         this.myRigidBody.velocity = new Vector2(this.horizontalMovement * this.currentMoveSpeed, this.myRigidBody.velocity.y);
-        this.playerMoving = true;
+        this.moving = true;
         this.lastMove = new Vector2(this.horizontalMovement, this.verticalMovement);
     }
 
@@ -118,7 +116,7 @@ public class PlayerController : EntityController
     {
         //transform.Translate(new Vector3(0f, this.verticalMovement * this.moveSpeed * Time.deltaTime, 0f));
         this.myRigidBody.velocity = new Vector2(this.myRigidBody.velocity.x, this.verticalMovement * this.currentMoveSpeed);
-        this.playerMoving = true;
+        this.moving = true;
         this.lastMove = new Vector2(this.horizontalMovement, this.verticalMovement);
     }
 
@@ -151,11 +149,6 @@ public class PlayerController : EntityController
                 this.lastMove = new Vector2(1f, 1f);
             break;
         }
-    }
-
-    public override string NameString()
-    {
-        return this.GetStats().GetName();
     }
 }
 

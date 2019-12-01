@@ -67,6 +67,7 @@
      <Compile Include="Assets\Scripts\Util\Dice.cs" />
      <Compile Include="Assets\Scripts\Util\EnemyType.cs" />
      <Compile Include="Assets\Scripts\Util\HitStatus.cs" />
+     <Compile Include="Assets\Scripts\VillagerController.cs" />
      <Compile Include="Assets\Scripts\WeaponController.cs" />
      <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\CircleObject.cs" />
      <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\GameObjectExtensions.cs" />
