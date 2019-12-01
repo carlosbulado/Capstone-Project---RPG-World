@@ -12,6 +12,9 @@ public class QuestObject : MonoBehaviour
     public string[] completeQuestDialog;
     public string[] afterCompleteQuestDialog;
 
+    public bool isItemQuest;
+    public string targetItem;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +24,14 @@ public class QuestObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(this.isItemQuest)
+        {
+            if(this.questManager.itemCollected == this.targetItem)
+            {
+                this.questManager.itemCollected = string.Empty;
+                this.CompleteQuest();
+            }
+        }
     }
 
     public void StartQuest()
