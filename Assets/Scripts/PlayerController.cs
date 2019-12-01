@@ -45,6 +45,12 @@ public class PlayerController : EntityController
         // Every frame the player movement is false
         this.moving = false;
 
+        if(!this.canMove)
+        {
+            this.myRigidBody.velocity = Vector2.zero;
+            return;
+        }
+
         if(!this.playerAttacking)
         {
             // Get the movement from human player

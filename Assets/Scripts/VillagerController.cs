@@ -18,9 +18,16 @@ public class VillagerController : EntityController
     protected override void Update()
     {
         base.Update();
+
+        if(!this.canMove)
+        {
+            this.myRigidBody.velocity = Vector2.zero;
+            return;
+        }
+
         if(this.moving)
         {
-            this.timeToMoveCounter -= Time.deltaTime;
+            this.moveCounter -= Time.deltaTime;
 
             switch(this.moveDirectionNumber)
             {
@@ -38,16 +45,15 @@ public class VillagerController : EntityController
                 break;
             }
             
-            if(this.timeToMoveCounter < 0) { this.StopMoving(); }
+            if(this.moveCounter < 0) { this.StopMoving(); }
         }
         else
         {
-            this.timeBetweenMoveCounter -= Time.deltaTime;
+            this.waitCounter -= Time.deltaTime;
             this.myRigidBody.velocity = Vector2.zero;
-            if(this.timeBetweenMoveCounter < 0)
+            if(this.waitCounter < 0)
             {
                 this.ChooseDirection();
-                this.timeBetweenMoveCounter = this.timeBetweenMove;
             }
         }
     }

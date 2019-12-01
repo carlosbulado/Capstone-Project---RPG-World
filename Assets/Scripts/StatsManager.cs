@@ -129,14 +129,28 @@ public class StatsManager : MonoBehaviour
                 messageWhenTryingAttack += string.Format("{0} hit {1}", this.GetName(), other.GetName());
                 UIManager.outputMessages.Add(messageWhenTryingAttack);
                 damage = this.RollDamage(other);
-                UIManager.outputMessages[UIManager.outputMessages.Count - 1] += string.Format(" by {0}", damage);
+                if(("" + UIManager.outputMessages[UIManager.outputMessages.Count - 1]).Contains("experience"))
+                {
+                    UIManager.outputMessages[UIManager.outputMessages.Count - 2] += string.Format(" by {0}", damage);
+                }
+                else
+                {
+                    UIManager.outputMessages[UIManager.outputMessages.Count - 1] += string.Format(" by {0}", damage);
+                }
             break;
             case HitStatus.YoureAwesome:
                 messageWhenTryingAttack += string.Format("{0} critically hit {1}", this.GetName(), other.GetName());
                 UIManager.outputMessages.Add(messageWhenTryingAttack);
                 damage = this.RollDamage(other);
                 damage += this.RollDamage(other);
-                UIManager.outputMessages[UIManager.outputMessages.Count - 1] += string.Format(" by {0}", damage);
+                if(("" + UIManager.outputMessages[UIManager.outputMessages.Count - 1]).Contains("experience"))
+                {
+                    UIManager.outputMessages[UIManager.outputMessages.Count - 2] += string.Format(" by {0}", damage);
+                }
+                else
+                {
+                    UIManager.outputMessages[UIManager.outputMessages.Count - 1] += string.Format(" by {0}", damage);
+                }
             break;
         }
         this.ShowDamageBurst(status, damage);

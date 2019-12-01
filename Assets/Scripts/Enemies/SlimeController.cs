@@ -18,22 +18,22 @@ public class SlimeController : EnemyController
     {
         if(this.moving)
         {
-            this.timeToMoveCounter -= Time.deltaTime;
+            this.moveCounter -= Time.deltaTime;
             this.myRigidBody.velocity = this.moveDirection;
-            if(this.timeToMoveCounter < 0f)
+            if(this.moveCounter < 0f)
             {
                 this.moving = false;
-                this.RenewTimeToMoveCounter();
+                this.RenewmoveCounter();
             }
         }
         else
         {
-            this.timeBetweenMoveCounter -= Time.deltaTime;
+            this.waitCounter -= Time.deltaTime;
             this.myRigidBody.velocity = Vector2.zero;
-            if(this.timeBetweenMoveCounter < 0f)
+            if(this.waitCounter < 0f)
             {
                 this.moving = true;
-                this.RenewTimeBetweenMoveCounter();
+                this.RenewwaitCounter();
                 this.moveDirection = new Vector3(Random.Range(-1f, 1f) * this.moveSpeed, Random.Range(-1f, 1f) * this.moveSpeed, 0f);
             }
         }

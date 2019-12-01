@@ -13,8 +13,8 @@ public abstract class EnemyController : EntityController
     {
         base.Start();
 
-        this.RenewTimeBetweenMoveCounter();
-        this.RenewTimeToMoveCounter();
+        this.RenewwaitCounter();
+        this.RenewmoveCounter();
 
         this.thePlayer = FindObjectOfType<PlayerController>();
 
@@ -37,14 +37,14 @@ public abstract class EnemyController : EntityController
         this.stats.Update();
     }
 
-    protected void RenewTimeBetweenMoveCounter()
+    protected void RenewwaitCounter()
     {
-        this.timeBetweenMoveCounter = Random.Range(this.timeBetweenMove * 0.5f, this.timeBetweenMove * 1.75f);
+        this.waitCounter = Random.Range(this.wait * 0.5f, this.wait * 1.75f);
     }
 
-    protected void RenewTimeToMoveCounter()
+    protected void RenewmoveCounter()
     {
-        this.timeToMoveCounter = Random.Range(this.timeToMove * 0.5f, this.timeToMove * 1.75f);
+        this.moveCounter = Random.Range(this.move * 0.5f, this.move * 1.75f);
     }
 
     protected void OnCollisionEnter2D(Collision2D other)

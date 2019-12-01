@@ -11,10 +11,11 @@ public abstract class EntityController : MonoBehaviour
     protected Rigidbody2D myRigidBody;
     public string startPoint;
     protected bool moving;
-    public float timeBetweenMove;
-    protected float timeBetweenMoveCounter;
-    public float timeToMove;
-    protected float timeToMoveCounter;
+    public bool canMove;
+    public float wait;
+    protected float waitCounter;
+    public float move;
+    protected float moveCounter;
     protected int moveDirectionNumber;
     protected Vector3 moveDirection;
     protected bool hasWalkZone;
@@ -27,6 +28,7 @@ public abstract class EntityController : MonoBehaviour
 
     public GameObject damageBurst;
     public GameObject damageText;
+    protected DialogManager dialogManager;
 
     // Getters
     public StatsManager GetStats() { return this.stats; }
@@ -34,10 +36,12 @@ public abstract class EntityController : MonoBehaviour
     // Start is called before the first frame update
     protected virtual void Start()
     {
+        this.canMove = true;
         this.myRigidBody = GetComponent<Rigidbody2D>();
+        this.dialogManager = FindObjectOfType<DialogManager>();
 
-        this.timeBetweenMoveCounter = this.timeBetweenMove;
-        this.timeToMoveCounter = this.timeToMove;
+        this.waitCounter = this.wait;
+        this.moveCounter = this.move;
 
         if(this.walkZone != null)
         {
@@ -50,14 +54,19 @@ public abstract class EntityController : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update()
     {
+        if(!this.dialogManager.isActive) { this.canMove = true; }
+
         if(this.hasWalkZone)
         {
-            if(transform.position.y > this.maxWalkPoint.y 
-            || transform.position.x > this.maxWalkPoint.x
-            || transform.position.y < this.minWalkPoint.y
-            || transform.position.x < this.minWalkPoint.x)
+            if(
+                (this.moveDirectionNumber == 0 && transform.position.y > this.maxWalkPoint.y)
+                || (this.moveDirectionNumber == 1 && transform.position.x > this.maxWalkPoint.x)
+                || (this.moveDirectionNumber == 2 && transform.position.y < this.minWalkPoint.y)
+                || (this.moveDirectionNumber == 3 && transform.position.x < this.minWalkPoint.x)
+            )
             {
                 this.StopMoving();
+                this.ChooseDirection();
             }
         }
     }
@@ -71,14 +80,13 @@ public abstract class EntityController : MonoBehaviour
     public void StopMoving()
     {
         this.moving = false;
-        this.timeBetweenMoveCounter = this.timeBetweenMove;
-        this.ChooseDirection();
+        this.waitCounter = this.wait;
     }
 
     public void ChooseDirection()
     {
         this.moveDirectionNumber = Random.Range(0, 4);
         this.moving = true;
-        this.timeToMoveCounter = this.timeToMove;
+        this.moveCounter = this.move;
     }
 }
