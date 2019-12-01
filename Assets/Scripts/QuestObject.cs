@@ -34,5 +34,6 @@ public class QuestObject : MonoBehaviour
         this.questManager.questsCompleted[this.questNumber] = true;
         gameObject.SetActive(false);
         this.questManager.ShowQuestDialog(this.completeQuestDialog);
+        //this.questManager.CompleteQuest();
     }
 }
