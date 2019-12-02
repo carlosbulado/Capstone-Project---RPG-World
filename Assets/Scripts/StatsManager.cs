@@ -24,6 +24,8 @@ public class StatsManager : MonoBehaviour
     public float flashAfterTakingDamageLength;
     public float flashAfterTakingDamageCounter;
 
+    public int goldPieces;
+
     // SFX Manager
     protected SFXManager sfxManager;
 
@@ -58,6 +60,7 @@ public class StatsManager : MonoBehaviour
     public int GetLevel() { return this.level; }
     public string GetName() { return this.name; }
     public int GetExperience() { return this.experience; }
+    public int GetGold() { return this.goldPieces; }
 
     // Setters
     public void SetLevel(int value) { this.level = value; }
@@ -69,6 +72,7 @@ public class StatsManager : MonoBehaviour
     public void SetEnemyType(EnemyType value) { this.enemyType = value; }
     public void SetName(string value) { this.name = value; }
     public void SetFlashLength(float value) { this.flashAfterTakingDamageLength = value; }
+    public void SetGold(int value) { this.goldPieces = value; }
 
     // Start is called before the first frame update
     public void Start()
@@ -295,5 +299,11 @@ public class StatsManager : MonoBehaviour
         this.intelligence += newInt;
         
         UIManager.outputMessages.Add(string.Format("Strength +{0} / Agility +{1} / Intelligence +{2}", newStr, newAgi, newInt));
+    }
+
+    public void AddMoney(int goldToAdd)
+    {
+        UIManager.outputMessages.Add(string.Format("{0} got {1} gold peices!", this.GetName(), goldToAdd));
+        this.goldPieces += goldToAdd;
     }
 }

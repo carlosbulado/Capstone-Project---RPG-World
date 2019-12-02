@@ -14,6 +14,7 @@ public class UIManager : MonoBehaviour
     public Text levelText;
     public Text playerNameText;
     public Text gameOutputText;
+    public Text goldText;
     protected PlayerController thePlayer;
     private static bool uiExists;
     public static ArrayList outputMessages = new ArrayList();
@@ -58,6 +59,9 @@ public class UIManager : MonoBehaviour
         
         newText = "" + this.thePlayer.GetStats().GetName();
         this.playerNameText.text = newText;
+        
+        newText = "Gold: " + this.thePlayer.GetStats().GetGold();
+        this.goldText.text = newText;
 
         string output = "";
         for (int i = 1 ; i < 5 && UIManager.outputMessages.Count > i ; i++)

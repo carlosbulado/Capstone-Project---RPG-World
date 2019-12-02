@@ -63,6 +63,7 @@
      <Compile Include="Assets\Scripts\EntityController.cs" />
      <Compile Include="Assets\Scripts\FloatingNumbers.cs" />
      <Compile Include="Assets\Scripts\LoadNewArea.cs" />
+     <Compile Include="Assets\Scripts\MoneyPickup.cs" />
      <Compile Include="Assets\Scripts\MusicManager.cs" />
      <Compile Include="Assets\Scripts\MusicSwitcher.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
