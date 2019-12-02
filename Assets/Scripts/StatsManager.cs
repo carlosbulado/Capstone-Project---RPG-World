@@ -85,7 +85,7 @@ public class StatsManager : MonoBehaviour
     // Update is called once per frame
     public void Update()
     {
-        if(this.currentHealth < 0)
+        if(this.currentHealth <= 0)
         {
             gameObject.SetActive(false);
         }
@@ -166,7 +166,7 @@ public class StatsManager : MonoBehaviour
         {
             other.flashAfterTakingDamage = true;
             other.flashAfterTakingDamageCounter = other.flashAfterTakingDamageLength;
-            if(other.gameObject.name == "Player") this.sfxManager.playerHurt.Play();
+            if(other.gameObject.name == "Player") { this.sfxManager.playerHurt.Play(); }
         }
     }
 

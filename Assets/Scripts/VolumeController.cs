@@ -12,7 +12,7 @@ public class VolumeController : MonoBehaviour
     // Setters
     public void SetAudioLevel(float value)
     {
-        if(this.audioLevel == null) { this.audio = GetComponent<AudioSource>(); }
+        if(this.audio == null) { this.audio = GetComponent<AudioSource>(); }
 
         this.audioLevel = this.defaultAudioLevel * value;
         this.audio.volume = this.audioLevel;

@@ -24,10 +24,12 @@ public class LoadNewArea : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.name == "Player")
-        {
-            Application.LoadLevel(this.levelToLoad);
-            this.thePlayer.startPoint = this.exitPoint;
-        }
+        if(other.gameObject.name == "Player") { this.GoTo(); }
+    }
+
+    public void GoTo()
+    {
+        Application.LoadLevel(this.levelToLoad);
+        if(this.thePlayer != null) { this.thePlayer.startPoint = this.exitPoint; }
     }
 }

@@ -44,6 +44,8 @@ public class VillagerController : EntityController
                     this.myRigidBody.velocity = new Vector2(0f, -this.moveSpeed);
                 break;
             }
+
+            this.FixMovementWithWalkZone();
             
             if(this.moveCounter < 0) { this.StopMoving(); }
         }

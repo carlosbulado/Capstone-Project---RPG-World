@@ -57,20 +57,6 @@ public abstract class EntityController : MonoBehaviour
     protected virtual void Update()
     {
         if(!this.dialogManager.isActive) { this.canMove = true; }
-
-        if(this.hasWalkZone)
-        {
-            if(
-                (this.moveDirectionNumber == 0 && transform.position.y > this.maxWalkPoint.y)
-                || (this.moveDirectionNumber == 1 && transform.position.x > this.maxWalkPoint.x)
-                || (this.moveDirectionNumber == 2 && transform.position.y < this.minWalkPoint.y)
-                || (this.moveDirectionNumber == 3 && transform.position.x < this.minWalkPoint.x)
-            )
-            {
-                this.StopMoving();
-                this.ChooseDirection();
-            }
-        }
     }
     
     protected void UpdateObjects()
@@ -90,5 +76,22 @@ public abstract class EntityController : MonoBehaviour
         this.moveDirectionNumber = Random.Range(0, 4);
         this.moving = true;
         this.moveCounter = this.move;
+    }
+
+    public void FixMovementWithWalkZone()
+    {
+        if(this.hasWalkZone)
+        {
+            if(
+                (transform.position.y > this.maxWalkPoint.y)
+                || (transform.position.x > this.maxWalkPoint.x)
+                || (transform.position.y < this.minWalkPoint.y)
+                || (transform.position.x < this.minWalkPoint.x)
+            )
+            {
+                this.StopMoving();
+                this.ChooseDirection();
+            }
+        }
     }
 }
