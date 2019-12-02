@@ -82,6 +82,7 @@ public class PlayerController : EntityController
                 this.playerAttacking = true;
                 this.myRigidBody.velocity = Vector2.zero;
                 this.animator.SetBool("PlayerAttacking", true);
+                this.sfxManager.playerAttack.Play();
             }
         }
 

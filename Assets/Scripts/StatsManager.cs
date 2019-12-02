@@ -24,6 +24,9 @@ public class StatsManager : MonoBehaviour
     public float flashAfterTakingDamageLength;
     public float flashAfterTakingDamageCounter;
 
+    // SFX Manager
+    protected SFXManager sfxManager;
+
     public StatsManager() : base()
     {
         this.name = "Alex Kid";
@@ -72,6 +75,7 @@ public class StatsManager : MonoBehaviour
     {
         this.Init();
         this.currentHealth = this.GetMaxHealth();
+        this.sfxManager = FindObjectOfType<SFXManager>();
     }
 
     // Update is called once per frame
@@ -158,6 +162,7 @@ public class StatsManager : MonoBehaviour
         {
             other.flashAfterTakingDamage = true;
             other.flashAfterTakingDamageCounter = other.flashAfterTakingDamageLength;
+            if(other.gameObject.name == "Player") this.sfxManager.playerHurt.Play();
         }
     }
 

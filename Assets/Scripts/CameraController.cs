@@ -34,6 +34,10 @@ public class CameraController : MonoBehaviour
             Destroy(gameObject);
         }
 
+        if(this.boundBox == null)
+        {
+            this.boundBox = FindObjectOfType<BoundsController>().GetComponent<BoxCollider2D>();
+        }
         this.SetBounds(this.boundBox);
 
         this.camera = GetComponent<Camera>();

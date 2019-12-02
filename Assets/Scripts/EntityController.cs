@@ -28,6 +28,9 @@ public abstract class EntityController : MonoBehaviour
     public GameObject damageText;
     protected DialogManager dialogManager;
 
+    // SFX Manager
+    protected SFXManager sfxManager;
+
     // Getters
     public StatsManager GetStats() { return this.stats; }
 
@@ -37,6 +40,7 @@ public abstract class EntityController : MonoBehaviour
         this.canMove = true;
         this.myRigidBody = GetComponent<Rigidbody2D>();
         this.dialogManager = FindObjectOfType<DialogManager>();
+        this.sfxManager = FindObjectOfType<SFXManager>();
 
         this.waitCounter = this.wait;
         this.moveCounter = this.move;
