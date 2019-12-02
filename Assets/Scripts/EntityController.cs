@@ -6,8 +6,6 @@ public abstract class EntityController : MonoBehaviour
 {
     // Variables
     public float moveSpeed;
-    protected float currentMoveSpeed;
-    public float diagnoalMoveModifier;
     protected Rigidbody2D myRigidBody;
     public string startPoint;
     protected bool moving;

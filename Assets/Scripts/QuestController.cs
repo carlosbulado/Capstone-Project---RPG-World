@@ -10,7 +10,7 @@ public class QuestController : MonoBehaviour
     public bool startQuest;
     public bool completeQuest;
     public QuestObject quest;
-    protected bool isquestCompleted;
+    protected bool isQuestCompleted;
 
     // Start is called before the first frame update
     void Start()
@@ -29,10 +29,10 @@ public class QuestController : MonoBehaviour
     {
         if(other.gameObject.name == "Player")
         {
-            bool isquestCompleted = this.questManager.questsCompleted[this.questNumber];
-            if(!isquestCompleted)
+            this.isQuestCompleted = this.questManager.questsCompleted[this.questNumber];
+            if(!this.isQuestCompleted)
             {
-                if(this.startQuest && !this.quest.isQuestActive && !this.quest.isQuestCompleted)
+                if(this.startQuest && !this.quest.isQuestActive && !this.quest.GetIsQuestCompleted())
                 {
                     this.quest.gameObject.SetActive(true);
                     this.quest.StartQuest();

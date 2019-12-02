@@ -21,6 +21,9 @@ public class QuestObject : MonoBehaviour
     public int quantEnemiesToKill;
     protected int quantEnemiesKilled;
 
+    // Getters
+    public bool GetIsQuestCompleted() { return this.isQuestCompleted; }
+
     // Start is called before the first frame update
     void Start()
     {

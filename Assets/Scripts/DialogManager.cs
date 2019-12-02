@@ -23,7 +23,7 @@ public class DialogManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(this.isActive && Input.GetKeyDown(KeyCode.Space))
+        if(this.isActive && Input.GetKeyUp(KeyCode.Space))
         {
             //this.dialogBox.SetActive(false);
             //this.isActive = false;

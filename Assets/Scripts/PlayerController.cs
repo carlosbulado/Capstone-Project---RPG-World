@@ -16,6 +16,8 @@ public class PlayerController : EntityController
 
     protected static bool playerExists;
 
+    protected Vector2 moveInput;
+
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -35,6 +37,9 @@ public class PlayerController : EntityController
         {
             Destroy(gameObject);
         }
+
+        this.lastMove = new Vector2(0f, -1f);
+
         base.UpdateObjects();
     }
 
@@ -56,16 +61,18 @@ public class PlayerController : EntityController
             // Get the movement from human player
             this.horizontalMovement = Input.GetAxisRaw("Horizontal");
             this.verticalMovement = Input.GetAxisRaw("Vertical");
-            // Last Movement
-            // Move the player left, right
-            if (this.horizontalMovement > 0.5f || this.horizontalMovement < -0.5f)
+            // Player Movement
+            this.moveInput = new Vector2(this.horizontalMovement, this.verticalMovement).normalized;
+
+            if(this.moveInput != Vector2.zero)
             {
-                this.MoveHorizontal();
+                this.myRigidBody.velocity = new Vector2(this.moveInput.x * this.moveSpeed, this.moveInput.y * this.moveSpeed);
+                this.moving = true;
+                this.lastMove = this.moveInput;
             }
-            // Move the player up, down
-            if(this.verticalMovement > 0.5f || this.verticalMovement < -0.5f)
+            else
             {
-                this.MoveVertical();
+                myRigidBody.velocity = Vector2.zero;
             }
 
             // Attack Movement
@@ -75,15 +82,6 @@ public class PlayerController : EntityController
                 this.playerAttacking = true;
                 this.myRigidBody.velocity = Vector2.zero;
                 this.animator.SetBool("PlayerAttacking", true);
-            }
-
-            if(Mathf.Abs(this.horizontalMovement) > 0.5f && Mathf.Abs(this.verticalMovement) > 0.5f)
-            {
-                this.currentMoveSpeed = this.moveSpeed * this.diagnoalMoveModifier;
-            }
-            else
-            {
-                this.currentMoveSpeed = this.moveSpeed;
             }
         }
 
@@ -108,22 +106,6 @@ public class PlayerController : EntityController
         this.animator.SetFloat("LastMoveY", this.lastMove.y);
 
         this.stats.Update();
-    }
-
-    void MoveHorizontal()
-    {
-        //transform.Translate(new Vector3(this.horizontalMovement * this.moveSpeed * Time.deltaTime, 0f, 0f));
-        this.myRigidBody.velocity = new Vector2(this.horizontalMovement * this.currentMoveSpeed, this.myRigidBody.velocity.y);
-        this.moving = true;
-        this.lastMove = new Vector2(this.horizontalMovement, this.verticalMovement);
-    }
-
-    void MoveVertical()
-    {
-        //transform.Translate(new Vector3(0f, this.verticalMovement * this.moveSpeed * Time.deltaTime, 0f));
-        this.myRigidBody.velocity = new Vector2(this.myRigidBody.velocity.x, this.verticalMovement * this.currentMoveSpeed);
-        this.moving = true;
-        this.lastMove = new Vector2(this.horizontalMovement, this.verticalMovement);
     }
 
     void StopPlayerIfThereIsNoMovement()

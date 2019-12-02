@@ -248,12 +248,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questManager: {fileID: 1586637011}
   questNumber: 3
+  isQuestActive: 0
+  questType: 0
   startQuestDialog: []
   completeQuestDialog: []
   afterCompleteQuestDialog: []
-  questType: 0
   targetItem: 
-  targetEnemy: 0
+  targetEnemyType: 0
   quantEnemiesToKill: 0
 --- !u!1 &221681886
 GameObject:
@@ -391,6 +392,7 @@ MonoBehaviour:
   questNumber: 1
   startQuest: 1
   completeQuest: 0
+  quest: {fileID: 0}
 --- !u!4 &392700880
 Transform:
   m_ObjectHideFlags: 0
@@ -514,7 +516,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 526318479}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.95, y: 0.22, z: -4.046875}
+  m_LocalPosition: {x: 2.1, y: 2.44, z: -4.046875}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -535,6 +537,7 @@ MonoBehaviour:
   questNumber: 0
   startQuest: 1
   completeQuest: 0
+  quest: {fileID: 0}
 --- !u!1 &601545104
 GameObject:
   m_ObjectHideFlags: 0
@@ -569,7 +572,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  diagnoalMoveModifier: 0
   startPoint: 
   canMove: 0
   wait: 2
@@ -579,7 +581,7 @@ MonoBehaviour:
     type: 3}
   damageText: {fileID: 6657555698269173652, guid: 989e6a9175b7b4a088e91c904099abff,
     type: 3}
-  type: 0
+  type: 1
   enemyQuestName: 
 --- !u!50 &601545106
 Rigidbody2D:
@@ -749,6 +751,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questManager: {fileID: 1586637011}
   questNumber: 0
+  isQuestActive: 0
+  questType: 0
   startQuestDialog:
   - Hello!
   - Can you go there for me please?
@@ -756,9 +760,8 @@ MonoBehaviour:
   - Thank you, I own you one.
   afterCompleteQuestDialog:
   - Greetings.
-  questType: 0
   targetItem: 
-  targetEnemy: 0
+  targetEnemyType: 0
   quantEnemiesToKill: 0
 --- !u!1 &768739676
 GameObject:
@@ -866,7 +869,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  diagnoalMoveModifier: 0
   startPoint: 
   canMove: 0
   wait: 2
@@ -876,7 +878,7 @@ MonoBehaviour:
     type: 3}
   damageText: {fileID: 6657555698269173652, guid: 989e6a9175b7b4a088e91c904099abff,
     type: 3}
-  type: 0
+  type: 1
   enemyQuestName: 
 --- !u!50 &781033561
 Rigidbody2D:
@@ -1046,12 +1048,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questManager: {fileID: 1586637011}
   questNumber: 2
+  isQuestActive: 0
+  questType: 0
   startQuestDialog: []
   completeQuestDialog: []
   afterCompleteQuestDialog: []
-  questType: 0
   targetItem: 
-  targetEnemy: 0
+  targetEnemyType: 0
   quantEnemiesToKill: 0
 --- !u!1 &890852104
 GameObject:
@@ -1188,16 +1191,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questManager: {fileID: 1586637011}
   questNumber: 1
+  isQuestActive: 0
+  questType: 2
   startQuestDialog:
   - I am having a problem with those slimes!
-  - Can you kill 5 slimes for me?
+  - Can you kill 3 slimes for me?
   completeQuestDialog:
-  - 'I killed 5 '
+  - I killed 3 Slimes!
   afterCompleteQuestDialog: []
-  questType: 1
   targetItem: 
-  targetEnemy: 1
-  quantEnemiesToKill: 5
+  targetEnemyType: 1
+  quantEnemiesToKill: 3
 --- !u!1 &1238970592
 GameObject:
   m_ObjectHideFlags: 0
@@ -1341,7 +1345,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 2
-  diagnoalMoveModifier: 0
   startPoint: 
   canMove: 0
   wait: 0.5
@@ -1503,7 +1506,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  diagnoalMoveModifier: 0
   startPoint: 
   canMove: 0
   wait: 2
@@ -1513,7 +1515,7 @@ MonoBehaviour:
     type: 3}
   damageText: {fileID: 6657555698269173652, guid: 989e6a9175b7b4a088e91c904099abff,
     type: 3}
-  type: 0
+  type: 1
   enemyQuestName: 
 --- !u!1 &1515333200
 GameObject:
@@ -1830,12 +1832,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questManager: {fileID: 1586637011}
   questNumber: 4
+  isQuestActive: 0
+  questType: 0
   startQuestDialog: []
   completeQuestDialog: []
   afterCompleteQuestDialog: []
-  questType: 0
   targetItem: 
-  targetEnemy: 0
+  targetEnemyType: 0
   quantEnemiesToKill: 0
 --- !u!1 &1807855681
 GameObject:
@@ -1934,7 +1937,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1810444838}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.46, y: 1.53, z: -4.046875}
+  m_LocalPosition: {x: 2.78, y: -4.42, z: -4.046875}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1955,6 +1958,7 @@ MonoBehaviour:
   questNumber: 0
   startQuest: 0
   completeQuest: 1
+  quest: {fileID: 0}
 --- !u!1 &1876900443
 GameObject:
   m_ObjectHideFlags: 0
@@ -1986,6 +1990,76 @@ Transform:
   m_Father: {fileID: 1616255581}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2029861524
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2029861526}
+  - component: {fileID: 2029861525}
+  - component: {fileID: 2029861527}
+  m_Layer: 0
+  m_Name: Bounds
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!61 &2029861525
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2029861524}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!4 &2029861526
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2029861524}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.8, y: -3.8, z: -4.111804}
+  m_LocalScale: {x: 44.572384, y: 20.14564, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2029861527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2029861524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ac10a158c5894228a2ac2ef493027cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1708017352615684389
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2207,6 +2281,11 @@ PrefabInstance:
       propertyPath: followTarget
       value: 
       objectReference: {fileID: 1616255575}
+    - target: {fileID: 1971563057618390533, guid: 28c6103abdb34461ea1f3e5902593eec,
+        type: 3}
+      propertyPath: boundBox
+      value: 
+      objectReference: {fileID: 2029861525}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28c6103abdb34461ea1f3e5902593eec, type: 3}
 --- !u!1001 &4282281008072631398
