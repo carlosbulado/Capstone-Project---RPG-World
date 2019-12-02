@@ -200,7 +200,6 @@ public class StatsManager : MonoBehaviour
             {
                 whoHitYou.AddExperience(this.ExperienceYeld());
             }
-            Destroy(this.gameObject);
         }
     }
 

@@ -9,14 +9,14 @@ public class QuestController : MonoBehaviour
     public int questNumber;
     public bool startQuest;
     public bool completeQuest;
-    protected QuestObject thisQuest;
-    protected bool isThisQuestCompleted;
+    public QuestObject quest;
+    protected bool isquestCompleted;
 
     // Start is called before the first frame update
     void Start()
     {
         this.questManager = FindObjectOfType<QuestManager>();
-        this.thisQuest = this.questManager.allQuests[this.questNumber];
+        this.quest = this.questManager.allQuests[this.questNumber];
     }
 
     // Update is called once per frame
@@ -29,20 +29,19 @@ public class QuestController : MonoBehaviour
     {
         if(other.gameObject.name == "Player")
         {
-            
-            bool isThisQuestCompleted = this.questManager.questsCompleted[this.questNumber];
-            if(!isThisQuestCompleted)
+            bool isquestCompleted = this.questManager.questsCompleted[this.questNumber];
+            if(!isquestCompleted)
             {
-                if(this.startQuest && !this.thisQuest.gameObject.activeSelf)
+                if(this.startQuest && !this.quest.isQuestActive && !this.quest.isQuestCompleted)
                 {
-                    this.thisQuest.gameObject.SetActive(true);
-                    this.thisQuest.StartQuest();
+                    this.quest.gameObject.SetActive(true);
+                    this.quest.StartQuest();
                 }
 
-                if(this.completeQuest && this.thisQuest.gameObject.activeSelf)
+                if(this.completeQuest && this.quest.isQuestActive)
                 {
-                    this.thisQuest.CompleteQuest();
-                    this.thisQuest.gameObject.SetActive(false);
+                    this.quest.CompleteQuest();
+                    this.quest.gameObject.SetActive(false);
                 }
             }
         }

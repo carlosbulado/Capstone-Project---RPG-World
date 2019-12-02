@@ -8,6 +8,9 @@ public abstract class EnemyController : EntityController
     protected PlayerController thePlayer;
     public EnemyType type;
 
+    public string enemyQuestName;
+    protected QuestManager questManager;
+
     // Start is called before the first frame update
     protected override  void Start()
     {
@@ -17,6 +20,7 @@ public abstract class EnemyController : EntityController
         this.RenewmoveCounter();
 
         this.thePlayer = FindObjectOfType<PlayerController>();
+        this.questManager = FindObjectOfType<QuestManager>();
 
         this.InitStats();
         this.AfterStart();
@@ -35,6 +39,12 @@ public abstract class EnemyController : EntityController
         this.Move();
         this.AfterUpdate();
         this.stats.Update();
+
+        if(this.stats.GetCurrentHealth() <= 0)
+        {
+            this.questManager.enemyKilled = this.type;
+            Destroy(this.gameObject);
+        }
     }
 
     protected void RenewwaitCounter()
