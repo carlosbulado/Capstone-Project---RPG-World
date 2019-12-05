@@ -220,7 +220,7 @@ public class StatsManager : MonoBehaviour
     public int EpicFail()
     {
         int dice = Dice.Roll(4);
-        if(dice == 2)
+        if(dice % 2 == 0)
         {
             int damage = this.RollDamage(this);
             UIManager.outputMessages.Add(string.Format("{0} roll an epic fail and hit itself by {1} damage", this.GetName(), damage));

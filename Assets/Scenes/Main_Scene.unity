@@ -1858,6 +1858,41 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4952620958978461706, guid: e461a9605ebbd494998c7fa365960c86,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1134
+      objectReference: {fileID: 0}
+    - target: {fileID: 4952620958978461706, guid: e461a9605ebbd494998c7fa365960c86,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -554
+      objectReference: {fileID: 0}
+    - target: {fileID: 4952620958978461706, guid: e461a9605ebbd494998c7fa365960c86,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4952620958978461706, guid: e461a9605ebbd494998c7fa365960c86,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4952620958978461706, guid: e461a9605ebbd494998c7fa365960c86,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4952620958978461706, guid: e461a9605ebbd494998c7fa365960c86,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465994657220793882, guid: e461a9605ebbd494998c7fa365960c86,
+        type: 3}
+      propertyPath: quantMessages
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e461a9605ebbd494998c7fa365960c86, type: 3}
 --- !u!1001 &5174987470403324622

@@ -15,6 +15,7 @@ public class UIManager : MonoBehaviour
     public Text playerNameText;
     public Text gameOutputText;
     public Text goldText;
+    public int quantMessages;
     protected PlayerController thePlayer;
     private static bool uiExists;
     public static ArrayList outputMessages = new ArrayList();
@@ -64,7 +65,7 @@ public class UIManager : MonoBehaviour
         this.goldText.text = newText;
 
         string output = "";
-        for (int i = 1 ; i < 5 && UIManager.outputMessages.Count > i ; i++)
+        for (int i = 1 ; i < this.quantMessages && UIManager.outputMessages.Count > i ; i++)
         {
             output = UIManager.outputMessages[UIManager.outputMessages.Count - i] + "\n" + output;
         }
