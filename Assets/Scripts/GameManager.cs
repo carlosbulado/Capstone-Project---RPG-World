@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // DB: get information about all players online 
         this.player = FindObjectOfType<PlayerController>();
         this.enemies = FindObjectsOfType<EnemyController>();
         // Make sure there is just one GameManager
@@ -30,6 +31,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        // DB: get information about all players online 
+        // DB: 
     }
 }

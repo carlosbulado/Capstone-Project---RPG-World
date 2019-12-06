@@ -23,7 +23,7 @@ public class QuestItem : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.name == "Player")
+        if(other.gameObject.tag == "Player")
         {
             if(!this.questManager.questsCompleted[this.questNumber] && this.questManager.allQuests[this.questNumber].gameObject.activeSelf)
             {

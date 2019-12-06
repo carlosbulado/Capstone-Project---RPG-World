@@ -24,7 +24,7 @@ public class LoadNewArea : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.name == "Player") { this.GoTo(); }
+        if(other.gameObject.tag == "Player") { this.GoTo(); }
     }
 
     public void GoTo()

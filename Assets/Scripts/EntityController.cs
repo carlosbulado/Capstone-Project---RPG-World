@@ -22,14 +22,14 @@ public abstract class EntityController : MonoBehaviour
     protected Vector2 maxWalkPoint;
 
     // Stats
-    protected StatsManager stats;
+    public StatsManager stats;
 
     public GameObject damageBurst;
     public GameObject damageText;
-    protected DialogManager dialogManager;
+    public DialogManager dialogManager;
 
     // SFX Manager
-    protected SFXManager sfxManager;
+    public SFXManager sfxManager;
 
     // Getters
     public StatsManager GetStats() { return this.stats; }
@@ -38,6 +38,8 @@ public abstract class EntityController : MonoBehaviour
     protected virtual void Start()
     {
         this.canMove = true;
+        
+        this.InitStats();
         this.myRigidBody = GetComponent<Rigidbody2D>();
         this.dialogManager = FindObjectOfType<DialogManager>();
         this.sfxManager = FindObjectOfType<SFXManager>();
@@ -93,5 +95,11 @@ public abstract class EntityController : MonoBehaviour
                 this.ChooseDirection();
             }
         }
+    }
+
+    protected void InitStats()
+    {
+        this.stats = GetComponent<StatsManager>();
+        this.stats.SetSpriteRenderer(GetComponent<SpriteRenderer>());
     }
 }

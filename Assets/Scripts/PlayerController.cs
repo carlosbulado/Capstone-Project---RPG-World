@@ -21,9 +21,10 @@ public class PlayerController : EntityController
     // Start is called before the first frame update
     protected override void Start()
     {
+        // DB: Read database for this player and get all information about it
         base.Start();
-        this.stats = new StatsManager(1, 1, transform.gameObject, GetComponent<SpriteRenderer>());
-        this.stats.Start();
+        // this.stats = new StatsManager(1, 1, transform.gameObject, GetComponent<SpriteRenderer>());
+        // this.stats.Start();
 
         this.animator = GetComponent<Animator>();
         // Fix the duplicates of player in the world
@@ -106,7 +107,7 @@ public class PlayerController : EntityController
         this.animator.SetFloat("LastMoveX", this.lastMove.x);
         this.animator.SetFloat("LastMoveY", this.lastMove.y);
 
-        this.stats.Update();
+        //this.stats.Update();
     }
 
     void StopPlayerIfThereIsNoMovement()

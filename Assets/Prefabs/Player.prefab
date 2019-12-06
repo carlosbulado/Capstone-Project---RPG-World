@@ -45,9 +45,10 @@ GameObject:
   - component: {fileID: 1767381331751682767}
   - component: {fileID: 1767381331751682764}
   - component: {fileID: 1767381331751682765}
+  - component: {fileID: 561296449900453206}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -93,6 +94,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -134,10 +136,13 @@ MonoBehaviour:
   wait: 0
   move: 0
   walkZone: {fileID: 0}
+  stats: {fileID: 0}
   damageBurst: {fileID: 2124122786615048442, guid: 9965e043d10d340c595535c93cf3e41f,
     type: 3}
   damageText: {fileID: 6657555698269173652, guid: 989e6a9175b7b4a088e91c904099abff,
     type: 3}
+  dialogManager: {fileID: 0}
+  sfxManager: {fileID: 0}
   attackTime: 0.5
 --- !u!95 &1767381331751682767
 Animator:
@@ -205,6 +210,30 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &561296449900453206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1767381331751682754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8b671d9bb904408ba059c368f9fedf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameObject: {fileID: 1767381331751682754}
+  spriteRenderer: {fileID: 0}
+  minLevel: 1
+  maxLevel: 1
+  damageBurst: {fileID: 2124122786615048442, guid: 9965e043d10d340c595535c93cf3e41f,
+    type: 3}
+  damageNumbers: {fileID: 6657555698269173652, guid: 989e6a9175b7b4a088e91c904099abff,
+    type: 3}
+  flashAfterTakingDamageLength: 1
+  flashAfterTakingDamageCounter: 0
+  goldPieces: 10
+  sfxManager: {fileID: 0}
 --- !u!1 &1767381332456079045
 GameObject:
   m_ObjectHideFlags: 0
@@ -263,6 +292,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -385,6 +415,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0

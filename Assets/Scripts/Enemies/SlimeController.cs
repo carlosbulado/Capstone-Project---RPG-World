@@ -44,10 +44,10 @@ public class SlimeController : EnemyController
         
     // }
 
-    protected override void InitStats()
-    {
-        // Will load something from database?
-        this.stats = new StatsManager(1, 3, transform.gameObject, GetComponent<SpriteRenderer>());
-        this.stats.Start();
-    }
+    // protected override void InitStats()
+    // {
+    //     // Will load something from database?
+    //     this.stats = new StatsManager(1, 3, transform.gameObject, GetComponent<SpriteRenderer>());
+    //     this.stats.Start();
+    // }
 }

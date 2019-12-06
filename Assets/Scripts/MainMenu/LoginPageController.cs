@@ -23,6 +23,8 @@ public class LoginPageController : MonoBehaviour
 
     public bool Login()
     {
+        //  DB: Needs to try username and password against the database and return
+        //      if account exists and if the username password is correct
         return true;
     }
 }

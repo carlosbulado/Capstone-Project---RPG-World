@@ -5,8 +5,8 @@ using UnityEngine;
 public class StatsManager : MonoBehaviour
 {
     // Variables
-    protected GameObject gameObject;
-    protected SpriteRenderer spriteRenderer;
+    public GameObject gameObject;
+    public SpriteRenderer spriteRenderer;
     protected int currentHealth;
     protected string name;
     protected int strength;
@@ -14,10 +14,10 @@ public class StatsManager : MonoBehaviour
     protected int intelligence;
     protected int level;
     protected int experience;
-    protected int minLevel;
-    protected int maxLevel;
-    protected GameObject damageBurst;
-    protected GameObject damageNumbers;
+    public int minLevel;
+    public int maxLevel;
+    public GameObject damageBurst;
+    public GameObject damageNumbers;
     protected EnemyType enemyType;
 
     protected bool flashAfterTakingDamage;
@@ -27,7 +27,7 @@ public class StatsManager : MonoBehaviour
     public int goldPieces;
 
     // SFX Manager
-    protected SFXManager sfxManager;
+    public SFXManager sfxManager;
 
     public StatsManager() : base()
     {
@@ -73,6 +73,7 @@ public class StatsManager : MonoBehaviour
     public void SetName(string value) { this.name = value; }
     public void SetFlashLength(float value) { this.flashAfterTakingDamageLength = value; }
     public void SetGold(int value) { this.goldPieces = value; }
+    public void SetSpriteRenderer(SpriteRenderer value) { this.spriteRenderer = value; }
 
     // Start is called before the first frame update
     public void Start()
@@ -90,7 +91,7 @@ public class StatsManager : MonoBehaviour
             gameObject.SetActive(false);
         }
 
-        if(this.gameObject.name == "Player")
+        if(this.gameObject.tag == "Player")
         {
             this.TryToLevelUp();
         }
@@ -166,7 +167,9 @@ public class StatsManager : MonoBehaviour
         {
             other.flashAfterTakingDamage = true;
             other.flashAfterTakingDamageCounter = other.flashAfterTakingDamageLength;
-            if(other.gameObject.name == "Player") { this.sfxManager.playerHurt.Play(); }
+            if(other.gameObject.tag == "Player") { this.sfxManager.playerHurt.Play(); }
+
+            // DB: Save who took damage
         }
     }
 
@@ -205,7 +208,7 @@ public class StatsManager : MonoBehaviour
         Instantiate(this.damageBurst, this.gameObject.transform.position, this.gameObject.transform.rotation);
         if(this.currentHealth <= 0)
         {
-            if(this.gameObject.tag == "Enemy" && whoHitYou.gameObject.name == "Player")
+            if(this.gameObject.tag == "Enemy" && whoHitYou.gameObject.tag == "Player")
             {
                 whoHitYou.AddExperience(this.ExperienceYeld());
             }
@@ -214,6 +217,7 @@ public class StatsManager : MonoBehaviour
 
     public void RecoverFullHealth()
     {
+        // DB: Save who fully recovery its HP
         this.currentHealth = this.GetMaxHealth();
     }
 
@@ -255,6 +259,7 @@ public class StatsManager : MonoBehaviour
     public void AddExperience(int expToAdd)
     {
         this.experience += expToAdd;
+        // DB: Add experience for the player
         UIManager.outputMessages.Add(string.Format("{0} got {1} experience!", this.GetName(), expToAdd));
     }
 
@@ -277,6 +282,7 @@ public class StatsManager : MonoBehaviour
 
     private void LevelUp()
     {
+        // DB: Save new level for the player
         this.level += 1;
         UIManager.outputMessages.Add(string.Format("{0} level up! Level {1}", this.GetName(), this.GetLevel()));
         this.LevelUpStats();
@@ -298,11 +304,13 @@ public class StatsManager : MonoBehaviour
         int newInt = (Dice.Roll(goUpStats));
         this.intelligence += newInt;
         
+        // DB: Save new str, agi and int for the player
         UIManager.outputMessages.Add(string.Format("Strength +{0} / Agility +{1} / Intelligence +{2}", newStr, newAgi, newInt));
     }
 
     public void AddMoney(int goldToAdd)
     {
+        // DB: Save money for the player
         UIManager.outputMessages.Add(string.Format("{0} got {1} gold peices!", this.GetName(), goldToAdd));
         this.goldPieces += goldToAdd;
     }

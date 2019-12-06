@@ -5,8 +5,12 @@ using UnityEngine;
 public abstract class EnemyController : EntityController
 {
     // Variable
-    protected PlayerController thePlayer;
+    public PlayerController thePlayer;
     public EnemyType type;
+    public int respawnTime;
+    protected int respawnTimeCounter;
+
+    public int numEnemyOnScene;
 
     public string enemyQuestName;
     protected QuestManager questManager;
@@ -22,7 +26,6 @@ public abstract class EnemyController : EntityController
         this.thePlayer = FindObjectOfType<PlayerController>();
         this.questManager = FindObjectOfType<QuestManager>();
 
-        this.InitStats();
         this.AfterStart();
         base.UpdateObjects();
 
@@ -44,6 +47,7 @@ public abstract class EnemyController : EntityController
         {
             this.questManager.enemyKilled = this.type;
             Destroy(this.gameObject);
+            //this.gameObject.SetActive(false);
         }
     }
 
@@ -59,7 +63,7 @@ public abstract class EnemyController : EntityController
 
     protected void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.gameObject.name == "Player")
+        if(other.gameObject.tag == "Player")
         {
             this.Attack();
         }
@@ -82,5 +86,4 @@ public abstract class EnemyController : EntityController
     protected abstract void AfterStart();
     protected abstract void AfterUpdate();
     protected abstract void Move();
-    protected abstract void InitStats();
 }

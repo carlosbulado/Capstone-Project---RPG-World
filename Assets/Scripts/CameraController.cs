@@ -36,9 +36,13 @@ public class CameraController : MonoBehaviour
 
         if(this.boundBox == null)
         {
-            this.boundBox = FindObjectOfType<BoundsController>().GetComponent<BoxCollider2D>();
+            var boundsContrl = FindObjectOfType<BoundsController>();
+            if(boundsContrl != null)
+            {
+                this.boundBox = boundsContrl.GetComponent<BoxCollider2D>();
+            }
         }
-        this.SetBounds(this.boundBox);
+        if(this.boundBox != null) { this.SetBounds(this.boundBox); }
 
         this.camera = GetComponent<Camera>();
         this.halfHeight = this.camera.orthographicSize;
@@ -53,8 +57,12 @@ public class CameraController : MonoBehaviour
 
         if(this.boundBox == null)
         {
-            this.boundBox = FindObjectOfType<BoundsController>().GetComponent<BoxCollider2D>();
-            this.SetBounds(this.boundBox);
+            var boundsContrl = FindObjectOfType<BoundsController>();
+            if(boundsContrl != null)
+            {
+                this.boundBox = boundsContrl.GetComponent<BoxCollider2D>();
+                this.SetBounds(this.boundBox); 
+            }
         }
 
         float clampedX = Mathf.Clamp(transform.position.x, this.minBounds.x + this.halfWidth, this.maxBounds.x - this.halfWidth);

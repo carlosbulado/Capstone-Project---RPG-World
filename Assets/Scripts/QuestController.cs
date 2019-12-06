@@ -27,7 +27,7 @@ public class QuestController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.name == "Player")
+        if(other.gameObject.tag == "Player")
         {
             this.isQuestCompleted = this.questManager.questsCompleted[this.questNumber];
             if(!this.isQuestCompleted)
