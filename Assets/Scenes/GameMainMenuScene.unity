@@ -1830,7 +1830,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 0
       - m_Target: {fileID: 792570696}
-        m_MethodName: OnConnectedToMaster
+        m_MethodName: OnClickConnectToMaster
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

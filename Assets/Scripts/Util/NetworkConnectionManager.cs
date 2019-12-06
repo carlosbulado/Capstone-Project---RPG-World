@@ -4,6 +4,7 @@ using UnityEngine;
 using Photon.Realtime;
 using Photon.Pun;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class NetworkConnectionManager : MonoBehaviourPunCallbacks
 {
@@ -67,6 +68,7 @@ public class NetworkConnectionManager : MonoBehaviourPunCallbacks
         base.OnJoinedRoom();
         TriesToConnectToRoom = false;
         Debug.Log("Master: " + PhotonNetwork.IsMasterClient + " | Players in Room " + PhotonNetwork.CurrentRoom.Name + ": " + PhotonNetwork.CurrentRoom.PlayerCount);
+        SceneManager.LoadScene("Main_Scene");
     }
 
     public override void OnJoinRandomFailed(short returnCode, string message)
@@ -79,7 +81,6 @@ public class NetworkConnectionManager : MonoBehaviourPunCallbacks
     {
         base.OnCreateRoomFailed(returnCode, message);
         Debug.Log(message);
-        base.OnCreateRoomFailed(returnCode, message);
         TriesToConnectToRoom = false;
 
     }
