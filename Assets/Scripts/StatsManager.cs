@@ -29,6 +29,9 @@ public class StatsManager : MonoBehaviour
     // SFX Manager
     public SFXManager sfxManager;
 
+    public UIManager uiManager;
+    public RPGWorldCapstone.SceneManager sceneManager;
+
     public StatsManager() : base()
     {
         this.name = "Alex Kid";
@@ -81,6 +84,8 @@ public class StatsManager : MonoBehaviour
         this.Init();
         this.currentHealth = this.GetMaxHealth();
         this.sfxManager = FindObjectOfType<SFXManager>();
+        if(this.uiManager == null) { this.uiManager = FindObjectOfType<UIManager>(); }
+        if(this.sceneManager == null) { this.sceneManager = FindObjectOfType<RPGWorldCapstone.SceneManager>(); }
     }
 
     // Update is called once per frame
@@ -168,6 +173,8 @@ public class StatsManager : MonoBehaviour
             other.flashAfterTakingDamage = true;
             other.flashAfterTakingDamageCounter = other.flashAfterTakingDamageLength;
             if(other.gameObject.tag == "Player") { this.sfxManager.playerHurt.Play(); }
+
+            this.sceneManager.SetObjectsThatTouch(this.gameObject, other.gameObject);
 
             // DB: Save who took damage
         }

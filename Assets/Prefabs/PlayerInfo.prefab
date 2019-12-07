@@ -961,7 +961,7 @@ MonoBehaviour:
   playerNameText: {fileID: 312788238957222903}
   gameOutputText: {fileID: 6342722625994049600}
   goldText: {fileID: 3142327398508516535}
-  quantMessages: 0
+  quantMessages: 10
 --- !u!1 &4520933156898858505
 GameObject:
   m_ObjectHideFlags: 0
@@ -1624,7 +1624,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 562, y: -276}
+  m_AnchoredPosition: {x: 394, y: -243}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &8995205110208741830

@@ -5,12 +5,12 @@ using UnityEngine;
 public class WeaponController : MonoBehaviour
 {
     // Variables
-    protected PlayerController thePlayer;
+    protected PlayerController player;
 
     // Start is called before the first frame update
     void Start()
     {
-        this.thePlayer = FindObjectOfType<PlayerController>();
+        this.player = FindObjectOfType<PlayerController>();
     }
 
     // Update is called once per frame
@@ -24,7 +24,7 @@ public class WeaponController : MonoBehaviour
         if(other.gameObject.tag == "Enemy")
         {
             EnemyController enemy = other.gameObject.GetComponent<EnemyController>();
-            this.thePlayer.GetStats().TryAttack(enemy.GetStats());
+            this.player.GetStats().TryAttack(enemy.GetStats());
         }
     }
 }

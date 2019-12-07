@@ -18,6 +18,9 @@ public class PlayerController : EntityController
 
     protected Vector2 moveInput;
 
+    // Getters
+    public Animator GetAnimator() { return this.animator; }
+
     // Start is called before the first frame update
     protected override void Start()
     {
