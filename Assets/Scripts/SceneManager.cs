@@ -22,6 +22,9 @@ namespace RPGWorldCapstone
 
         public float recoil;
 
+        public float timeToAutoRegen;
+        protected float timeToAutoRegenCounter;
+
         // Setters
         public void SetObjectsThatTouch(GameObject hit, GameObject took)
         {
@@ -38,7 +41,7 @@ namespace RPGWorldCapstone
             var newObj2X = obj1X <= obj2X ? obj2X + this.recoil : obj2X - this.recoil;
             var newObj2Y = obj1Y <= obj2Y ? obj2Y + this.recoil : obj2Y - this.recoil;
 
-            this.whoHit.transform.position = new Vector2(newObj1X, newObj1Y);
+            //this.whoHit.transform.position = new Vector2(newObj1X, newObj1Y);
             this.whoGotHit.transform.position = new Vector2(newObj2X, newObj2Y);
         }
 
@@ -67,7 +70,9 @@ namespace RPGWorldCapstone
 
             if(this.player == null) { this.player = FindObjectOfType<PlayerController>(); }
             if(this.timeToPlayerRespawn <= 0f) { this.timeToPlayerRespawn = 5f; }
-            if(this.recoil == 0f) { this.recoil = .5f; }
+            if(this.recoil <= 0f) { this.recoil = .5f; }
+            if(this.timeToAutoRegen <= 0f) { this.timeToAutoRegen = 2.5f; }
+            this.timeToAutoRegenCounter = this.timeToAutoRegen;
         }
 
         // Update is called once per frame
@@ -75,6 +80,7 @@ namespace RPGWorldCapstone
         {
             this.checkPlayer();
             this.checkRespawnMonsters();
+            this.checkPlayerAutoRegen();
         }
 
         void checkPlayer()
@@ -131,6 +137,26 @@ namespace RPGWorldCapstone
                 {
                     this.respawnCounter[i] -= Time.deltaTime;
                 }
+            }
+        }
+
+        void checkPlayerAutoRegen()
+        {
+            if(!this.player.IsMoving())
+            {
+                if(this.timeToAutoRegenCounter > 0)
+                {
+                    this.timeToAutoRegenCounter -= Time.deltaTime;
+                }
+                else
+                {
+                    this.player.GetStats().RecoverHealth((int)this.player.GetStats().GetStrength() / 2);
+                    this.timeToAutoRegenCounter = this.timeToAutoRegen;
+                }
+            }
+            else
+            {
+                this.timeToAutoRegenCounter = this.timeToAutoRegen;
             }
         }
     }

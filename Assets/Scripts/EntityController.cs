@@ -33,6 +33,7 @@ public abstract class EntityController : MonoBehaviour
 
     // Getters
     public StatsManager GetStats() { return this.stats; }
+    public bool IsMoving() { return this.moving; }
 
     // Start is called before the first frame update
     protected virtual void Start()

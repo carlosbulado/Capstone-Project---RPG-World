@@ -29,16 +29,24 @@ public class FloatingNumbers : MonoBehaviour
         {
             case HitStatus.EpicFail:
                 this.displayNumber.text = "YOU FAIL MISERABLY !";
-            break;
+                this.displayNumber.color = Color.white;
+                break;
             case HitStatus.FacePalm:
                 this.displayNumber.text = "MISS !";
-            break;
+                this.displayNumber.color = Color.yellow;
+                break;
             case HitStatus.NotBad:
                 this.displayNumber.text = "" + this.damageDone;
-            break;
+                this.displayNumber.color = Color.red;
+                break;
             case HitStatus.YoureAwesome:
                 this.displayNumber.text = "" + this.damageDone + " !!!";
-            break;
+                this.displayNumber.color = Color.magenta;
+                break;
+            case HitStatus.Recovery:
+                this.displayNumber.text = "" + this.damageDone;
+                this.displayNumber.color = Color.green;
+                break;
         }
 
         transform.position = new Vector3(transform.position.x, transform.position.y + (this.moveSpeed * Time.deltaTime), transform.position.z);

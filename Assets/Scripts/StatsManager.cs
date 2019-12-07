@@ -222,6 +222,13 @@ public class StatsManager : MonoBehaviour
         }
     }
 
+    public void RecoverHealth(int quantHeal)
+    {
+        // DB: Save who fully recovery its HP
+        this.currentHealth = this.GetMaxHealth() < this.currentHealth + quantHeal ? this.GetMaxHealth() : this.currentHealth + quantHeal;
+        this.ShowDamageBurst(HitStatus.Recovery, quantHeal);
+    }
+
     public void RecoverFullHealth()
     {
         // DB: Save who fully recovery its HP
