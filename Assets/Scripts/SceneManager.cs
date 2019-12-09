@@ -85,7 +85,7 @@ namespace RPGWorldCapstone
 
         void checkPlayer()
         {
-            if(this.player.GetStats().GetCurrentHealth() <= 0)
+            if (player.GetStats().GetCurrentHealth() <= 0)
             {
                 this.player.gameObject.SetActive(false);
             }

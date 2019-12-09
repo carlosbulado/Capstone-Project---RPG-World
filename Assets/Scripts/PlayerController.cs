@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using Photon.Pun;
 using UnityEngine;
 
 public class PlayerController : EntityController
@@ -45,6 +47,11 @@ public class PlayerController : EntityController
         this.lastMove = new Vector2(0f, -1f);
 
         base.UpdateObjects();
+
+        if (!photonView.IsMine && GetComponent<EntityController>() != null)
+        {
+            Destroy(GetComponent<EnemyController>());
+        }
     }
 
     // Update is called once per frame
@@ -142,6 +149,16 @@ public class PlayerController : EntityController
                 this.lastMove = new Vector2(1f, 1f);
             break;
         }
+    }
+
+    public static void RefreshInstance(ref PlayerController player, PlayerController Prefab)
+    {
+        if (player != null)
+        {
+            PhotonNetwork.Destroy(player.gameObject);
+        }
+
+        player = PhotonNetwork.Instantiate(Prefab.gameObject.name, player.lastMove, Quaternion.identity).GetComponent<PlayerController>();
     }
 }
 

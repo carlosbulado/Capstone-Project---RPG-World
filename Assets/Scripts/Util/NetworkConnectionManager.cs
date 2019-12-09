@@ -26,8 +26,11 @@ public class NetworkConnectionManager : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void Update()
     {
-        BtnConnectMaster.gameObject.SetActive(!PhotonNetwork.IsConnected && !ConnectingToMaster);
-        BtnConnectRoom.gameObject.SetActive(PhotonNetwork.IsConnected && !ConnectingToMaster && !ConnectingToRoom);
+        if(BtnConnectMaster != null)
+            BtnConnectMaster.gameObject.SetActive(!PhotonNetwork.IsConnected && !ConnectingToMaster);
+
+        if(BtnConnectRoom != null)
+            BtnConnectRoom.gameObject.SetActive(PhotonNetwork.IsConnected && !ConnectingToMaster && !ConnectingToRoom);
     }
 
     public override void OnConnectedToMaster()
@@ -75,7 +78,7 @@ public class NetworkConnectionManager : MonoBehaviourPunCallbacks
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
         base.OnJoinRandomFailed(returnCode, message);
-        PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = 4 }); // first param is the name room. must be unique or null - that will generate a random name as well
+        PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = 20 }); // first param is the name room. must be unique or null - that will generate a random name as well
     }
 
     public override void OnCreateRoomFailed(short returnCode, string message)

@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Photon.Pun;
 using UnityEngine;
 
-public abstract class EntityController : MonoBehaviour
+public abstract class EntityController : MonoBehaviourPun
 {
     // Variables
     public float moveSpeed;
