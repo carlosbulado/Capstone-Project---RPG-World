@@ -54,6 +54,7 @@ public class NetworkConnectionManager : MonoBehaviourPunCallbacks
         PhotonNetwork.OfflineMode = false;
         //PhotonNetwork.NickName = PlayerName.ToString();
         PhotonNetwork.NickName = "Player" + Random.Range(1, 100);
+        PhotonNetwork.GameVersion = "v0.1";
 
         ConnectingToMaster = true;
         PhotonNetwork.ConnectUsingSettings();
@@ -64,9 +65,19 @@ public class NetworkConnectionManager : MonoBehaviourPunCallbacks
         if (!PhotonNetwork.IsConnected) return;
 
         ConnectingToRoom = true;
-        //PhotonNetwork.CreateRoom("Test Room 1", new RoomOptions { MaxPlayers = 20 });
+
+        if (PhotonNetwork.IsMasterClient)
+        {
+            PhotonNetwork.CreateRoom("Test Room 1", new RoomOptions { MaxPlayers = 20 });
+        } else
+        {
+            PhotonNetwork.JoinRoom("Test Room 1");
+        }
+
         //PhotonNetwork.JoinRoom("Test Room 1");
-        PhotonNetwork.JoinRandomRoom();
+        //PhotonNetwork.JoinRandomRoom();
+
+
     }
 
     public override void OnJoinedRoom()
@@ -74,7 +85,8 @@ public class NetworkConnectionManager : MonoBehaviourPunCallbacks
         base.OnJoinedRoom();
         ConnectingToRoom = false;
         Debug.Log("Master: " + PhotonNetwork.IsMasterClient + " | Players in Room " + PhotonNetwork.CurrentRoom.Name + ": " + PhotonNetwork.CurrentRoom.PlayerCount);
-        SceneManager.LoadScene("Main_Scene");
+        //SceneManager.LoadScene("Main_Scene");
+        PhotonNetwork.LoadLevel("Main_Scene");
     }
 
     public override void OnJoinRoomFailed(short returnCode, string message)
