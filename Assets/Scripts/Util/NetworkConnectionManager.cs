@@ -12,27 +12,28 @@ public class NetworkConnectionManager : MonoBehaviourPunCallbacks
     public Button BtnConnectRoom;
     public InputField PlayerName;
 
-    public bool TriesToConnectToMaster;
-    public bool TriesToConnectToRoom;
+    public bool ConnectingToMaster;
+    public bool ConnectingToRoom;
 
     // Start is called before the first frame update
     void Start()
     {
-        TriesToConnectToMaster = false;
-        TriesToConnectToRoom = false;
+        DontDestroyOnLoad(gameObject);
+        ConnectingToMaster = false;
+        ConnectingToRoom = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        BtnConnectMaster.gameObject.SetActive(!PhotonNetwork.IsConnected && !TriesToConnectToMaster);
-        BtnConnectRoom.gameObject.SetActive(PhotonNetwork.IsConnected && !TriesToConnectToMaster && !TriesToConnectToRoom);
+        BtnConnectMaster.gameObject.SetActive(!PhotonNetwork.IsConnected && !ConnectingToMaster);
+        BtnConnectRoom.gameObject.SetActive(PhotonNetwork.IsConnected && !ConnectingToMaster && !ConnectingToRoom);
     }
 
     public override void OnConnectedToMaster()
     {
         base.OnConnectedToMaster();
-        TriesToConnectToMaster = false;
+        ConnectingToMaster = false;
         Debug.Log("Connected to Master!");
     }
 
@@ -40,18 +41,18 @@ public class NetworkConnectionManager : MonoBehaviourPunCallbacks
     public override void OnDisconnected(DisconnectCause cause)
     {
         base.OnDisconnected(cause);
-        TriesToConnectToMaster = false;
-        TriesToConnectToRoom = false;
+        ConnectingToMaster = false;
+        ConnectingToRoom = false;
         Debug.LogWarningFormat("OnDisconnected() was called by PUN with reason {0}", cause);
     }
 
     public void OnClickConnectToMaster()
     {
         PhotonNetwork.OfflineMode = false;
-        PhotonNetwork.NickName = PlayerName.ToString();
-        PhotonNetwork.AutomaticallySyncScene = true; // this will call the PhotonNetwork.LoadLevel()
+        //PhotonNetwork.NickName = PlayerName.ToString();
+        PhotonNetwork.NickName = "Player" + Random.Range(1, 100);
 
-        TriesToConnectToMaster = true;
+        ConnectingToMaster = true;
         PhotonNetwork.ConnectUsingSettings();
     }
 
@@ -59,14 +60,14 @@ public class NetworkConnectionManager : MonoBehaviourPunCallbacks
     {
         if (!PhotonNetwork.IsConnected) return;
 
-        TriesToConnectToRoom = true;
+        ConnectingToRoom = true;
         PhotonNetwork.JoinRandomRoom();
     }
 
     public override void OnJoinedRoom()
     {
         base.OnJoinedRoom();
-        TriesToConnectToRoom = false;
+        ConnectingToRoom = false;
         Debug.Log("Master: " + PhotonNetwork.IsMasterClient + " | Players in Room " + PhotonNetwork.CurrentRoom.Name + ": " + PhotonNetwork.CurrentRoom.PlayerCount);
         SceneManager.LoadScene("Main_Scene");
     }
@@ -81,7 +82,7 @@ public class NetworkConnectionManager : MonoBehaviourPunCallbacks
     {
         base.OnCreateRoomFailed(returnCode, message);
         Debug.Log(message);
-        TriesToConnectToRoom = false;
+        ConnectingToRoom = false;
 
     }
 

@@ -156,62 +156,62 @@
     <None Include="Assets\Tiled2Unity\Imported\_ReadMe.txt" />
     <None Include="Assets\Photon\PhotonUnityNetworking\changelog.txt" />
     <None Include="Assets\Tiled2Unity\Meshes\_ReadMe.txt" />
-    <Reference Include="Unity.Timeline.Editor">
-      <HintPath>/Users/antonio/DocumentsLocal/Lambton/Academic/Courses/Fall2019/MAD5264-CapstoneProject/Final/Capstone-Project---RPG-World/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="com.unity.multiplayer-hlapi.Editor">
-      <HintPath>/Users/antonio/DocumentsLocal/Lambton/Academic/Courses/Fall2019/MAD5264-CapstoneProject/Final/Capstone-Project---RPG-World/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VSCode.Editor">
-      <HintPath>/Users/antonio/DocumentsLocal/Lambton/Academic/Courses/Fall2019/MAD5264-CapstoneProject/Final/Capstone-Project---RPG-World/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>/Users/antonio/DocumentsLocal/Lambton/Academic/Courses/Fall2019/MAD5264-CapstoneProject/Final/Capstone-Project---RPG-World/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>/Users/antonio/DocumentsLocal/Lambton/Academic/Courses/Fall2019/MAD5264-CapstoneProject/Final/Capstone-Project---RPG-World/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Timeline">
-      <HintPath>/Users/antonio/DocumentsLocal/Lambton/Academic/Courses/Fall2019/MAD5264-CapstoneProject/Final/Capstone-Project---RPG-World/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>/Users/gisetavares/Documents/Meus_Estudos/Lambton/MAD5264-CapstoneProject/CapstoneProject/Capstone-Project---RPG-World/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>/Users/antonio/DocumentsLocal/Lambton/Academic/Courses/Fall2019/MAD5264-CapstoneProject/Final/Capstone-Project---RPG-World/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="com.unity.multiplayer-weaver.Editor">
-      <HintPath>/Users/antonio/DocumentsLocal/Lambton/Academic/Courses/Fall2019/MAD5264-CapstoneProject/Final/Capstone-Project---RPG-World/Library/ScriptAssemblies/com.unity.multiplayer-weaver.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.XR.LegacyInputHelpers">
-      <HintPath>/Users/antonio/DocumentsLocal/Lambton/Academic/Courses/Fall2019/MAD5264-CapstoneProject/Final/Capstone-Project---RPG-World/Library/ScriptAssemblies/UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Rider.Editor">
-      <HintPath>/Users/antonio/DocumentsLocal/Lambton/Academic/Courses/Fall2019/MAD5264-CapstoneProject/Final/Capstone-Project---RPG-World/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.2D.Sprite.Editor">
-      <HintPath>/Users/antonio/DocumentsLocal/Lambton/Academic/Courses/Fall2019/MAD5264-CapstoneProject/Final/Capstone-Project---RPG-World/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.2D.Tilemap.Editor">
-      <HintPath>/Users/antonio/DocumentsLocal/Lambton/Academic/Courses/Fall2019/MAD5264-CapstoneProject/Final/Capstone-Project---RPG-World/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.SpatialTracking">
-      <HintPath>/Users/antonio/DocumentsLocal/Lambton/Academic/Courses/Fall2019/MAD5264-CapstoneProject/Final/Capstone-Project---RPG-World/Library/ScriptAssemblies/UnityEditor.SpatialTracking.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.SpatialTracking">
-      <HintPath>/Users/antonio/DocumentsLocal/Lambton/Academic/Courses/Fall2019/MAD5264-CapstoneProject/Final/Capstone-Project---RPG-World/Library/ScriptAssemblies/UnityEngine.SpatialTracking.dll</HintPath>
+      <HintPath>/Users/gisetavares/Documents/Meus_Estudos/Lambton/MAD5264-CapstoneProject/CapstoneProject/Capstone-Project---RPG-World/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>/Users/antonio/DocumentsLocal/Lambton/Academic/Courses/Fall2019/MAD5264-CapstoneProject/Final/Capstone-Project---RPG-World/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>/Users/gisetavares/Documents/Meus_Estudos/Lambton/MAD5264-CapstoneProject/CapstoneProject/Capstone-Project---RPG-World/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.DataPrivacy">
-      <HintPath>/Users/antonio/DocumentsLocal/Lambton/Academic/Courses/Fall2019/MAD5264-CapstoneProject/Final/Capstone-Project---RPG-World/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+      <HintPath>/Users/gisetavares/Documents/Meus_Estudos/Lambton/MAD5264-CapstoneProject/CapstoneProject/Capstone-Project---RPG-World/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Timeline.Editor">
+      <HintPath>/Users/gisetavares/Documents/Meus_Estudos/Lambton/MAD5264-CapstoneProject/CapstoneProject/Capstone-Project---RPG-World/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="com.unity.multiplayer-hlapi.Editor">
+      <HintPath>/Users/gisetavares/Documents/Meus_Estudos/Lambton/MAD5264-CapstoneProject/CapstoneProject/Capstone-Project---RPG-World/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VSCode.Editor">
+      <HintPath>/Users/gisetavares/Documents/Meus_Estudos/Lambton/MAD5264-CapstoneProject/CapstoneProject/Capstone-Project---RPG-World/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>/Users/gisetavares/Documents/Meus_Estudos/Lambton/MAD5264-CapstoneProject/CapstoneProject/Capstone-Project---RPG-World/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Timeline">
+      <HintPath>/Users/gisetavares/Documents/Meus_Estudos/Lambton/MAD5264-CapstoneProject/CapstoneProject/Capstone-Project---RPG-World/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+    </Reference>
+    <Reference Include="com.unity.multiplayer-weaver.Editor">
+      <HintPath>/Users/gisetavares/Documents/Meus_Estudos/Lambton/MAD5264-CapstoneProject/CapstoneProject/Capstone-Project---RPG-World/Library/ScriptAssemblies/com.unity.multiplayer-weaver.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.XR.LegacyInputHelpers">
+      <HintPath>/Users/gisetavares/Documents/Meus_Estudos/Lambton/MAD5264-CapstoneProject/CapstoneProject/Capstone-Project---RPG-World/Library/ScriptAssemblies/UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Rider.Editor">
+      <HintPath>/Users/gisetavares/Documents/Meus_Estudos/Lambton/MAD5264-CapstoneProject/CapstoneProject/Capstone-Project---RPG-World/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Sprite.Editor">
+      <HintPath>/Users/gisetavares/Documents/Meus_Estudos/Lambton/MAD5264-CapstoneProject/CapstoneProject/Capstone-Project---RPG-World/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Tilemap.Editor">
+      <HintPath>/Users/gisetavares/Documents/Meus_Estudos/Lambton/MAD5264-CapstoneProject/CapstoneProject/Capstone-Project---RPG-World/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.SpatialTracking">
+      <HintPath>/Users/gisetavares/Documents/Meus_Estudos/Lambton/MAD5264-CapstoneProject/CapstoneProject/Capstone-Project---RPG-World/Library/ScriptAssemblies/UnityEditor.SpatialTracking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SpatialTracking">
+      <HintPath>/Users/gisetavares/Documents/Meus_Estudos/Lambton/MAD5264-CapstoneProject/CapstoneProject/Capstone-Project---RPG-World/Library/ScriptAssemblies/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.XR.LegacyInputHelpers">
-      <HintPath>/Users/antonio/DocumentsLocal/Lambton/Academic/Courses/Fall2019/MAD5264-CapstoneProject/Final/Capstone-Project---RPG-World/Library/ScriptAssemblies/UnityEditor.XR.LegacyInputHelpers.dll</HintPath>
+      <HintPath>/Users/gisetavares/Documents/Meus_Estudos/Lambton/MAD5264-CapstoneProject/CapstoneProject/Capstone-Project---RPG-World/Library/ScriptAssemblies/UnityEditor.XR.LegacyInputHelpers.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>/Users/antonio/DocumentsLocal/Lambton/Academic/Courses/Fall2019/MAD5264-CapstoneProject/Final/Capstone-Project---RPG-World/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>/Users/gisetavares/Documents/Meus_Estudos/Lambton/MAD5264-CapstoneProject/CapstoneProject/Capstone-Project---RPG-World/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="com.unity.multiplayer-hlapi.Runtime">
-      <HintPath>/Users/antonio/DocumentsLocal/Lambton/Academic/Courses/Fall2019/MAD5264-CapstoneProject/Final/Capstone-Project---RPG-World/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
+      <HintPath>/Users/gisetavares/Documents/Meus_Estudos/Lambton/MAD5264-CapstoneProject/CapstoneProject/Capstone-Project---RPG-World/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>/Applications/Unity/Hub/Editor/2019.2.15f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -391,22 +391,22 @@
       <HintPath>/Applications/Unity/Hub/Editor/2019.2.15f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.XRModule.dll</HintPath>
     </Reference>
     <Reference Include="Photon3Unity3D">
-      <HintPath>/Users/antonio/DocumentsLocal/Lambton/Academic/Courses/Fall2019/MAD5264-CapstoneProject/Final/Capstone-Project---RPG-World/Assets/Photon/PhotonLibs/Photon3Unity3D.dll</HintPath>
+      <HintPath>/Users/gisetavares/Documents/Meus_Estudos/Lambton/MAD5264-CapstoneProject/CapstoneProject/Capstone-Project---RPG-World/Assets/Photon/PhotonLibs/Photon3Unity3D.dll</HintPath>
     </Reference>
     <Reference Include="websocket-sharp">
-      <HintPath>/Users/antonio/DocumentsLocal/Lambton/Academic/Courses/Fall2019/MAD5264-CapstoneProject/Final/Capstone-Project---RPG-World/Assets/Photon/PhotonLibs/WebSocket/websocket-sharp.dll</HintPath>
+      <HintPath>/Users/gisetavares/Documents/Meus_Estudos/Lambton/MAD5264-CapstoneProject/CapstoneProject/Capstone-Project---RPG-World/Assets/Photon/PhotonLibs/WebSocket/websocket-sharp.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>/Users/antonio/DocumentsLocal/Lambton/Academic/Courses/Fall2019/MAD5264-CapstoneProject/Final/Capstone-Project---RPG-World/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
+      <HintPath>/Users/gisetavares/Documents/Meus_Estudos/Lambton/MAD5264-CapstoneProject/CapstoneProject/Capstone-Project---RPG-World/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
-      <HintPath>/Users/antonio/DocumentsLocal/Lambton/Academic/Courses/Fall2019/MAD5264-CapstoneProject/Final/Capstone-Project---RPG-World/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Editor.dll</HintPath>
+      <HintPath>/Users/gisetavares/Documents/Meus_Estudos/Lambton/MAD5264-CapstoneProject/CapstoneProject/Capstone-Project---RPG-World/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>/Users/antonio/DocumentsLocal/Lambton/Academic/Courses/Fall2019/MAD5264-CapstoneProject/Final/Capstone-Project---RPG-World/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.StandardEvents.dll</HintPath>
+      <HintPath>/Users/gisetavares/Documents/Meus_Estudos/Lambton/MAD5264-CapstoneProject/CapstoneProject/Capstone-Project---RPG-World/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
-      <HintPath>/Applications/Unity/Hub/Editor/2019.2.15f1/PlaybackEngines/AppleTVSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+      <HintPath>/Applications/Unity/Hub/Editor/2019.2.15f1/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Common">
       <HintPath>/Applications/Unity/Hub/Editor/2019.2.15f1/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Common.dll</HintPath>
