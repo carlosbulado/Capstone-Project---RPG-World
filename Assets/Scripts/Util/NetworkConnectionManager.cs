@@ -64,6 +64,8 @@ public class NetworkConnectionManager : MonoBehaviourPunCallbacks
         if (!PhotonNetwork.IsConnected) return;
 
         ConnectingToRoom = true;
+        //PhotonNetwork.CreateRoom("Test Room 1", new RoomOptions { MaxPlayers = 20 });
+        //PhotonNetwork.JoinRoom("Test Room 1");
         PhotonNetwork.JoinRandomRoom();
     }
 
@@ -73,6 +75,12 @@ public class NetworkConnectionManager : MonoBehaviourPunCallbacks
         ConnectingToRoom = false;
         Debug.Log("Master: " + PhotonNetwork.IsMasterClient + " | Players in Room " + PhotonNetwork.CurrentRoom.Name + ": " + PhotonNetwork.CurrentRoom.PlayerCount);
         SceneManager.LoadScene("Main_Scene");
+    }
+
+    public override void OnJoinRoomFailed(short returnCode, string message)
+    {
+        base.OnJoinRoomFailed(returnCode, message);
+        PhotonNetwork.JoinRoom("Test Room 1");
     }
 
     public override void OnJoinRandomFailed(short returnCode, string message)
