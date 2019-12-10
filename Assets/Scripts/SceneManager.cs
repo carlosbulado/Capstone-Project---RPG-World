@@ -27,6 +27,8 @@ namespace RPGWorldCapstone
         public float timeToAutoRegen;
         protected float timeToAutoRegenCounter;
 
+        public LoadNewArea loadNewLevel; 
+
         // Setters
         public void SetObjectsThatTouch(GameObject hit, GameObject took)
         {
@@ -81,7 +83,7 @@ namespace RPGWorldCapstone
         void Update()
         {
             this.checkPlayer();
-            this.checkRespawnMonsters();
+            try { this.checkRespawnMonsters(); } catch { }
             this.checkPlayerAutoRegen();
             this.checkBoss();
         }
@@ -115,7 +117,7 @@ namespace RPGWorldCapstone
                 {
                     //this.player.gameObject.SetActive(false);
                     // TODO: Send player to main screen
-                    Application.LoadLevel("GameMainMenuScene");
+                    Application.LoadLevel("GameOver");
                     //if(this.player != null) { this.player.startPoint = "Point01"; }
                 }
             }
@@ -192,7 +194,16 @@ namespace RPGWorldCapstone
                     this.player.GetStats().SetIntelligence(this.player.GetStats().GetIntelligence() + 20);
                     this.player.GetStats().RecoverFullHealth();
                     // TODO: Send player to second dungeon level
+                    this.bossKilled();
                 }
+            }
+        }
+
+        void bossKilled()
+        {
+            if(this.boss.GetStats().GetCurrentHealth() <= 0)
+            {
+                this.loadNewLevel.GoTo();
             }
         }
     }

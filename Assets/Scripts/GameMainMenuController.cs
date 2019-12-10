@@ -27,15 +27,18 @@ public class GameMainMenuController : MonoBehaviour
 
     public void CheckPlayerLogged()
     {
-        if(this.isPlayerLogged)
+        if(this.loginPageController != null && this.loggedPageController != null)
         {
-            this.loginPageController.gameObject.SetActive(false);
-            this.loggedPageController.gameObject.SetActive(true);
-        }
-        else
-        {
-            this.loginPageController.gameObject.SetActive(true);
-            this.loggedPageController.gameObject.SetActive(false);
+            if(this.isPlayerLogged)
+            {
+                this.loginPageController.gameObject.SetActive(false);
+                this.loggedPageController.gameObject.SetActive(true);
+            }
+            else
+            {
+                this.loginPageController.gameObject.SetActive(true);
+                this.loggedPageController.gameObject.SetActive(false);
+            }
         }
     }
 
@@ -47,7 +50,7 @@ public class GameMainMenuController : MonoBehaviour
         //    // Message like 'Username or Password Incorrect'
         //}
         //this.CheckPlayerLogged();
-        SceneManager.LoadScene("Level 1");
+        Application.LoadLevel("Level 1");
     }
 
     public void TryLogout()
