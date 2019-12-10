@@ -77,6 +77,11 @@ public class UIManager : MonoBehaviour
             newText = "HP: " + this.enemyHealthBar.value + "/" + this.enemyHealthBar.maxValue;
             this.enemyHealthText.text = newText;
         }
+        else
+        {
+            this.boss = FindObjectOfType<MinotaurController>();
+            if(this.boss == null) this.boss = FindObjectOfType<GhostController>();
+        }
 
         string output = "";
         for (int i = 1 ; i < this.quantMessages && UIManager.outputMessages.Count > i ; i++)

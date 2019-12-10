@@ -8,7 +8,7 @@ public class StatsManager : MonoBehaviour
     public GameObject gameObject;
     public SpriteRenderer spriteRenderer;
     public int currentHealth;
-    protected string name;
+    public string name;
     public int strength;
     public int agility;
     public int intelligence;

@@ -161,6 +161,11 @@ public class PlayerController : EntityController
 
         // player = PhotonNetwork.Instantiate(Prefab.gameObject.name, player.lastMove, Quaternion.identity).GetComponent<PlayerController>();
     }
+
+    public void HidePlayer()
+    {
+        transform.position = new Vector3(transform.position.x, transform.position.y, -1223f);
+    }
 }
 
 public enum PlayerPosition

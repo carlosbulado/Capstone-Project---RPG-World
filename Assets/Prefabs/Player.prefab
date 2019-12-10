@@ -146,7 +146,8 @@ MonoBehaviour:
     type: 3}
   dialogManager: {fileID: 0}
   sfxManager: {fileID: 0}
-  attackTime: 0.5
+  spriteRenderer: {fileID: 0}
+  attackTime: 0.01
 --- !u!95 &1767381331751682767
 Animator:
   serializedVersion: 3
@@ -227,6 +228,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameObject: {fileID: 1767381331751682754}
   spriteRenderer: {fileID: 0}
+  currentHealth: 0
+  name: MADT Student
+  strength: 0
+  agility: 0
+  intelligence: 0
   minLevel: 1
   maxLevel: 1
   damageBurst: {fileID: 2124122786615048442, guid: 9965e043d10d340c595535c93cf3e41f,

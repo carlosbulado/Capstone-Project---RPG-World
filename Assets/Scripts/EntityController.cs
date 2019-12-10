@@ -32,6 +32,8 @@ public abstract class EntityController : MonoBehaviour
     // SFX Manager
     public SFXManager sfxManager;
 
+    public SpriteRenderer spriteRenderer;
+
     // Getters
     public StatsManager GetStats() { return this.stats; }
     public bool IsMoving() { return this.moving; }
@@ -45,6 +47,7 @@ public abstract class EntityController : MonoBehaviour
         this.myRigidBody = GetComponent<Rigidbody2D>();
         this.dialogManager = FindObjectOfType<DialogManager>();
         this.sfxManager = FindObjectOfType<SFXManager>();
+        this.spriteRenderer = GetComponent<SpriteRenderer>();
 
         this.waitCounter = this.wait;
         this.moveCounter = this.move;

@@ -289,7 +289,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 345455831}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 40.885014, y: 7.9359016, z: -8520.192}
+  m_LocalPosition: {x: 40.885014, y: 7.9359016, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -714,7 +714,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 848355851}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.5, y: 15.7, z: -8523.382}
+  m_LocalPosition: {x: -0.5, y: 15.7, z: 0}
   m_LocalScale: {x: 36.606174, y: 36.664417, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1116,7 +1116,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1349507064}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.6, y: 15.9, z: -7831.3774}
+  m_LocalPosition: {x: -0.6, y: 15.9, z: 0}
   m_LocalScale: {x: 43.510864, y: 46.275707, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1372,8 +1372,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 646e8e82484324de6a9d53cac16439ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelToLoad: Level 2
-  exitPoint: 
+  levelToLoad: Ghost_Boss_Scene
+  exitPoint: Ghost_Scene_StartPoint
 --- !u!4 &1741989344
 Transform:
   m_ObjectHideFlags: 0
@@ -1382,7 +1382,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1741989342}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.853046, y: 19.23211, z: -13854.704}
+  m_LocalPosition: {x: 16.853046, y: 19.23211, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1427,7 +1427,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1947562283}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.2, y: -1.4, z: -1300.8145}
+  m_LocalPosition: {x: -4.2, y: -1.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

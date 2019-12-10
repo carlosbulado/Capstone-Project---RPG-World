@@ -23,6 +23,7 @@ public class GameMainMenuController : MonoBehaviour
     void Update()
     {
         //this.CheckPlayerLogged();
+        FindObjectOfType<PlayerController>().HidePlayer();
     }
 
     public void CheckPlayerLogged()
@@ -51,6 +52,12 @@ public class GameMainMenuController : MonoBehaviour
         //}
         //this.CheckPlayerLogged();
         Application.LoadLevel("Level 1");
+        try
+        {
+            FindObjectOfType<PlayerController>().gameObject.SetActive(true);
+            FindObjectOfType<PlayerController>().startPoint = "Level_1_SP";
+        }
+        catch { }
     }
 
     public void TryLogout()

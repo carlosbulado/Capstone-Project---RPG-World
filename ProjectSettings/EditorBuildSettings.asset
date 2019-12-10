@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: 9d048bf314f274dd9ad9cf5db98a31bd
+  - enabled: 1
+    path: Assets/Scenes/Ghost_Boss_Scene.unity
+    guid: 234963fcdb3bc41bcb11c0a7827b7b17
   m_configObjects: {}
