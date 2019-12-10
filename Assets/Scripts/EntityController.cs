@@ -63,6 +63,7 @@ public abstract class EntityController : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update()
     {
+        if(this.sfxManager == null) { this.sfxManager = FindObjectOfType<SFXManager>(); }
         if(this.dialogManager != null && !this.dialogManager.isActive) { this.canMove = true; }
     }
     

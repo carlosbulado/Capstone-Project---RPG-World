@@ -15,7 +15,12 @@ public class GameOverController : MonoBehaviour
         //try { FindObjectOfType<UIManager>().gameObject.SetActive(false); } catch { }
         //try { FindObjectOfType<AudioManager>().gameObject.SetActive(false); } catch { }
 
-        FindObjectOfType<PlayerController>().GetStats().RecoverFullHealth();
+        StatsManager playerStatsManager = FindObjectOfType<PlayerController>().GetStats();
+        if(playerStatsManager.GetStrength() > 25) { playerStatsManager.SetStrength(playerStatsManager.GetStrength() - 5); }
+        if(playerStatsManager.GetAgility() > 20) { playerStatsManager.SetAgility(playerStatsManager.GetAgility() - 5); }
+        if(playerStatsManager.GetIntelligence() > 15) { playerStatsManager.SetIntelligence(playerStatsManager.GetIntelligence() - 5); }
+
+        playerStatsManager.RecoverFullHealth();
     }
 
     // Update is called once per frame

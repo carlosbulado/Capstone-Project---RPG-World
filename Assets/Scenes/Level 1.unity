@@ -234,7 +234,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e7ef83ceab7242f79f57e7d4a68b6d4, type: 3}
---- !u!1 &851108276
+--- !u!1 &1178429081
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -242,23 +242,23 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 851108279}
-  - component: {fileID: 851108278}
-  - component: {fileID: 851108277}
+  - component: {fileID: 1178429084}
+  - component: {fileID: 1178429083}
+  - component: {fileID: 1178429082}
   m_Layer: 0
-  m_Name: Entry_House_001 (1)
+  m_Name: Entry_House_001 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!61 &851108277
+--- !u!61 &1178429082
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 851108276}
+  m_GameObject: {fileID: 1178429081}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -278,29 +278,29 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &851108278
+--- !u!114 &1178429083
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 851108276}
+  m_GameObject: {fileID: 1178429081}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 646e8e82484324de6a9d53cac16439ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelToLoad: Ghost_Boss_Scene
-  exitPoint: Ghost_Scene_StartPoint
---- !u!4 &851108279
+  levelToLoad: Minotaur_Boss_Scene
+  exitPoint: Minotaur_Boss_Scene_Entry_Point
+--- !u!4 &1178429084
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 851108276}
+  m_GameObject: {fileID: 1178429081}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 33.6, y: -79.9, z: -7298.228}
+  m_LocalPosition: {x: 30.4, y: -80.2, z: -7298.228}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

@@ -459,7 +459,7 @@ SpriteRenderer:
   m_SortingLayerID: 593036739
   m_SortingLayer: 2
   m_SortingOrder: 1
-  m_Sprite: {fileID: 6024656646373625249, guid: 53f93f49bea8d4fcfb1b229ff9ef2d18,
+  m_Sprite: {fileID: 5545791981575950956, guid: 37f378fe6189a4412979d357418f2106,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -484,18 +484,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.2904855, y: -0.022006035}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.625, y: 1.28125}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.8943691, y: 1.2200642}
   m_EdgeRadius: 0
 --- !u!114 &436320155
 MonoBehaviour:
@@ -522,6 +522,7 @@ MonoBehaviour:
     type: 3}
   dialogManager: {fileID: 0}
   sfxManager: {fileID: 0}
+  spriteRenderer: {fileID: 0}
   thePlayer: {fileID: 0}
   type: 2
   respawnTime: 240
@@ -578,6 +579,7 @@ MonoBehaviour:
   gameObject: {fileID: 436320152}
   spriteRenderer: {fileID: 0}
   currentHealth: 0
+  name: Alex Kid
   strength: 30
   agility: 30
   intelligence: 20
@@ -854,6 +856,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1969420649723060361, guid: e6877c60a0b9a4f8d93106e7ad86b862,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 264386521
+      objectReference: {fileID: 0}
+    - target: {fileID: 1969420649723060361, guid: e6877c60a0b9a4f8d93106e7ad86b862,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2083793792557155014, guid: e6877c60a0b9a4f8d93106e7ad86b862,
         type: 3}
       propertyPath: m_Name
@@ -867,12 +879,12 @@ PrefabInstance:
     - target: {fileID: 3356877863595876544, guid: e6877c60a0b9a4f8d93106e7ad86b862,
         type: 3}
       propertyPath: m_SortingLayerID
-      value: 264386521
+      value: -2144451505
       objectReference: {fileID: 0}
     - target: {fileID: 3356877863595876544, guid: e6877c60a0b9a4f8d93106e7ad86b862,
         type: 3}
       propertyPath: m_SortingLayer
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5223085987422278965, guid: e6877c60a0b9a4f8d93106e7ad86b862,
         type: 3}
