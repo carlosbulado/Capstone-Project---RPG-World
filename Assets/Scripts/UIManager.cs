@@ -67,11 +67,16 @@ public class UIManager : MonoBehaviour
         newText = "Gold: " + this.thePlayer.GetStats().GetGold();
         this.goldText.text = newText;
         
-        this.enemyHealthBar.maxValue = this.boss.GetStats().GetMaxHealth();
-        this.enemyHealthBar.value = this.boss.GetStats().GetCurrentHealth();
-        
-        newText = "HP: " + this.enemyHealthBar.value + "/" + this.enemyHealthBar.maxValue;
-        this.enemyHealthText.text = newText;
+        this.enemyHealthBar.gameObject.SetActive(false);
+        if(this.boss != null)
+        {
+            this.enemyHealthBar.gameObject.SetActive(true);
+            this.enemyHealthBar.maxValue = this.boss.GetStats().GetMaxHealth();
+            this.enemyHealthBar.value = this.boss.GetStats().GetCurrentHealth();
+            
+            newText = "HP: " + this.enemyHealthBar.value + "/" + this.enemyHealthBar.maxValue;
+            this.enemyHealthText.text = newText;
+        }
 
         string output = "";
         for (int i = 1 ; i < this.quantMessages && UIManager.outputMessages.Count > i ; i++)

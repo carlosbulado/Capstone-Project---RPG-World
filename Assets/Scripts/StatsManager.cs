@@ -91,7 +91,7 @@ public class StatsManager : MonoBehaviour
     // Update is called once per frame
     public void Update()
     {
-        if(this.currentHealth <= 0)
+        if(this.currentHealth <= 0 && this.gameObject.tag != "Player")
         {
             gameObject.SetActive(false);
         }

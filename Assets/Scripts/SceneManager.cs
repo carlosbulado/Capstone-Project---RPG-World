@@ -8,6 +8,7 @@ namespace RPGWorldCapstone
     {
         // Variables
         public PlayerController player;
+        public EnemyController boss;
         public bool isPlayerRespawn;
         public float timeToPlayerRespawn;
         public EnemiesManager enemiesManager;
@@ -69,7 +70,7 @@ namespace RPGWorldCapstone
                 this.allEnemiesOnScene = new EnemyController[this.respawnPoints.Length];
             }
 
-            if(this.player == null) { this.player = FindObjectOfType<PlayerController>(); }
+            if(this.player == null) { this.player = FindObjectOfType<PlayerController>(); GameManager.globalPlayer = this.player; }
             if(this.timeToPlayerRespawn <= 0f) { this.timeToPlayerRespawn = 5f; }
             if(this.recoil <= 0f) { this.recoil = .5f; }
             if(this.timeToAutoRegen <= 0f) { this.timeToAutoRegen = 2.5f; }
@@ -82,10 +83,13 @@ namespace RPGWorldCapstone
             this.checkPlayer();
             this.checkRespawnMonsters();
             this.checkPlayerAutoRegen();
+            this.checkBoss();
         }
 
         void checkPlayer()
         {
+            if(this.player == null) { this.player = GameManager.globalPlayer; }
+
             if(this.isPlayerRespawn)
             {
                 if (player.GetStats().GetCurrentHealth() <= 0)
@@ -103,6 +107,16 @@ namespace RPGWorldCapstone
                     this.player.GetStats().RecoverFullHealth();
                     this.player.gameObject.SetActive(true);
                     this.player.GetAnimator().SetBool("PlayerAttacking", false);
+                }
+            }
+            else
+            {
+                if (this.player.GetStats().GetCurrentHealth() <= 0)
+                {
+                    //this.player.gameObject.SetActive(false);
+                    // TODO: Send player to main screen
+                    Application.LoadLevel("Main_Scene");
+                    if(this.player != null) { this.player.startPoint = "Point01"; }
                 }
             }
         }
@@ -162,6 +176,21 @@ namespace RPGWorldCapstone
             else
             {
                 this.timeToAutoRegenCounter = this.timeToAutoRegen;
+            }
+        }
+
+        void checkBoss()
+        {
+            if(this.boss != null)
+            {
+                if(this.boss.GetStats().GetCurrentHealth() <= 0)
+                {
+                    this.player.GetStats().SetStrength(this.player.GetStats().GetStrength() + 20);
+                    this.player.GetStats().SetAgility(this.player.GetStats().GetAgility() + 20);
+                    this.player.GetStats().SetIntelligence(this.player.GetStats().GetIntelligence() + 20);
+                    this.player.GetStats().RecoverFullHealth();
+                    // TODO: Send player to second dungeon level
+                }
             }
         }
     }

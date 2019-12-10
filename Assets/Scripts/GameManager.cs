@@ -1,17 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Photon.Pun;
-using Photon.Realtime;
+//using Photon.Pun;
+//using Photon.Realtime;
 using UnityEngine;
 
 namespace RPGWorldCapstone
 {
-    public class GameManager : MonoBehaviourPunCallbacks
+    public class GameManager : MonoBehaviour
     {
         // Variables
         private static bool isGameManagerExists;
         [Header("RPG World Capstone - player")]
         public PlayerController player;
+        public static PlayerController globalPlayer;
 
         [HideInInspector]
         public PlayerController localPlayer;
@@ -38,14 +39,14 @@ namespace RPGWorldCapstone
             //PlayerController.RefreshInstance(ref localPlayer, player);
         }
 
-        private void Awake()
-        {
-            if (!PhotonNetwork.IsConnected)
-            {
-                UnityEngine.SceneManagement.SceneManager.LoadScene("GameMainMenuScene");
-                return;
-            }
-        }
+        // private void Awake()
+        // {
+        //     if (!PhotonNetwork.IsConnected)
+        //     {
+        //         UnityEngine.SceneManagement.SceneManager.LoadScene("GameMainMenuScene");
+        //         return;
+        //     }
+        // }
 
         // Update is called once per frame
         void Update()
@@ -53,11 +54,11 @@ namespace RPGWorldCapstone
 
         }
 
-        public override void OnPlayerEnteredRoom(Player newPlayer)
-        {
-            base.OnPlayerEnteredRoom(newPlayer);
-            PlayerController.RefreshInstance(ref localPlayer, player);
-        }
+        // public override void OnPlayerEnteredRoom(Player newPlayer)
+        // {
+        //     base.OnPlayerEnteredRoom(newPlayer);
+        //     PlayerController.RefreshInstance(ref localPlayer, player);
+        // }
     }
 }
 
