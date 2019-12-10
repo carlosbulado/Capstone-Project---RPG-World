@@ -1,5 +1,6 @@
 public enum EnemyType
 {
     Empty,
-    Slime
+    Slime,
+    Minotaur
 }

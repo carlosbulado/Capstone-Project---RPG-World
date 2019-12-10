@@ -17,6 +17,9 @@ public class UIManager : MonoBehaviour
     public Text goldText;
     public int quantMessages;
     protected PlayerController thePlayer;
+    public EnemyController boss;
+    public Text enemyHealthText;
+    public Slider enemyHealthBar;
     private static bool uiExists;
     public static ArrayList outputMessages = new ArrayList();
 
@@ -63,6 +66,12 @@ public class UIManager : MonoBehaviour
         
         newText = "Gold: " + this.thePlayer.GetStats().GetGold();
         this.goldText.text = newText;
+        
+        this.enemyHealthBar.maxValue = this.boss.GetStats().GetMaxHealth();
+        this.enemyHealthBar.value = this.boss.GetStats().GetCurrentHealth();
+        
+        newText = "HP: " + this.enemyHealthBar.value + "/" + this.enemyHealthBar.maxValue;
+        this.enemyHealthText.text = newText;
 
         string output = "";
         for (int i = 1 ; i < this.quantMessages && UIManager.outputMessages.Count > i ; i++)

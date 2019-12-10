@@ -79,6 +79,7 @@ public abstract class EnemyController : EntityController
         switch(this.type)
         {
             case EnemyType.Slime: return "Slime";
+            case EnemyType.Minotaur: return "Minotaur";
         }
         return "";
     }
@@ -86,4 +87,18 @@ public abstract class EnemyController : EntityController
     protected abstract void AfterStart();
     protected abstract void AfterUpdate();
     protected abstract void Move();
+
+    public virtual bool CanReceiveAttack()
+    {
+        return true;
+    }
+
+    public void MovementFollowingThePlayer()
+    {
+        var isXLT = this.thePlayer.transform.position.x <= this.transform.position.x;
+        var isYLT = this.thePlayer.transform.position.y <= this.transform.position.y;
+        var movingX = isXLT ? -1f : 1f;
+        var movingY = isYLT ? -1f : 1f;
+        this.moveDirection = new Vector3(movingX * this.moveSpeed, movingY * this.moveSpeed, 0f);
+    }
 }

@@ -3,6 +3,7 @@
  <image source="../Art/roguelikeSheet_transparent.png" width="968" height="526"/>
  <terraintypes>
   <terrain name="Dirt" tile="578"/>
+  <terrain name="Rock_Floor" tile="0"/>
  </terraintypes>
  <tile id="0">
   <objectgroup draworder="index" id="3">
@@ -109,4 +110,17 @@
    <object id="1" x="-0.0739486" y="-0.0739486" width="16.1208" height="15.9729"/>
   </objectgroup>
  </tile>
+ <tile id="860" terrain="1,1,1,"/>
+ <tile id="861" terrain="1,1,,1"/>
+ <tile id="862" terrain=",,,1"/>
+ <tile id="863" terrain=",,1,1"/>
+ <tile id="864" terrain=",,1,"/>
+ <tile id="917" terrain="1,,1,1"/>
+ <tile id="918" terrain=",1,1,1"/>
+ <tile id="919" terrain=",1,,1"/>
+ <tile id="920" terrain="1,1,1,1"/>
+ <tile id="921" terrain="1,,1,"/>
+ <tile id="976" terrain=",1,,"/>
+ <tile id="977" terrain="1,1,,"/>
+ <tile id="978" terrain="1,,,"/>
 </tileset>

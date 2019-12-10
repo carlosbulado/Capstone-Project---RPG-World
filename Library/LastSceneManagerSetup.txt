@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/Level 3.unity
+- path: Assets/Scenes/Minotaur_Boss_Scene.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

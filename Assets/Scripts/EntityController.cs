@@ -60,7 +60,7 @@ public abstract class EntityController : MonoBehaviourPun
     // Update is called once per frame
     protected virtual void Update()
     {
-        if(!this.dialogManager.isActive) { this.canMove = true; }
+        if(this.dialogManager != null && !this.dialogManager.isActive) { this.canMove = true; }
     }
     
     protected void UpdateObjects()

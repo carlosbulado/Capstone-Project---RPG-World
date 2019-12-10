@@ -4,5 +4,6 @@ public enum HitStatus
     FacePalm,
     NotBad,
     YoureAwesome,
-    Recovery
+    Recovery,
+    Invulnerable
 }

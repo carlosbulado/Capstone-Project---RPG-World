@@ -8,6 +8,7 @@ namespace RPGWorldCapstone
     {
         // Variables
         public PlayerController player;
+        public bool isPlayerRespawn;
         public float timeToPlayerRespawn;
         public EnemiesManager enemiesManager;
         private static bool sceneManagerExists;
@@ -85,21 +86,24 @@ namespace RPGWorldCapstone
 
         void checkPlayer()
         {
-            if (player.GetStats().GetCurrentHealth() <= 0)
+            if(this.isPlayerRespawn)
             {
-                this.player.gameObject.SetActive(false);
-            }
+                if (player.GetStats().GetCurrentHealth() <= 0)
+                {
+                    this.player.gameObject.SetActive(false);
+                }
 
-            if(!this.player.gameObject.active)
-            {
-                this.timeToPlayerRespawn -= Time.deltaTime;
-            }
-            if(this.timeToPlayerRespawn <= 0)
-            {
-                this.timeToPlayerRespawn = 5f;
-                this.player.GetStats().RecoverFullHealth();
-                this.player.gameObject.SetActive(true);
-                this.player.GetAnimator().SetBool("PlayerAttacking", false);
+                if(!this.player.gameObject.active)
+                {
+                    this.timeToPlayerRespawn -= Time.deltaTime;
+                }
+                if(this.timeToPlayerRespawn <= 0)
+                {
+                    this.timeToPlayerRespawn = 5f;
+                    this.player.GetStats().RecoverFullHealth();
+                    this.player.gameObject.SetActive(true);
+                    this.player.GetAnimator().SetBool("PlayerAttacking", false);
+                }
             }
         }
 
@@ -126,6 +130,7 @@ namespace RPGWorldCapstone
                     var enemyClone = (EnemyController)Instantiate(newEmeny, this.respawnPoints[nextRespawn].transform.position, this.respawnPoints[nextRespawn].transform.rotation);
                     this.respawnPointsEnemyAlive[nextRespawn] = true;
                     this.respawnCounter[nextRespawn] = newEmeny.respawnTime;
+                    enemyClone.gameObject.transform.position = new Vector3(enemyClone.gameObject.transform.position.x, enemyClone.gameObject.transform.position.y, 0);
                     enemyClone.gameObject.SetActive(true);
                     enemyClone.numEnemyOnScene = nextRespawn;
                 }

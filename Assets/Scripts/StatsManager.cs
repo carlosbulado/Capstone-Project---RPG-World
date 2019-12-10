@@ -7,11 +7,11 @@ public class StatsManager : MonoBehaviour
     // Variables
     public GameObject gameObject;
     public SpriteRenderer spriteRenderer;
-    protected int currentHealth;
+    public int currentHealth;
     protected string name;
-    protected int strength;
-    protected int agility;
-    protected int intelligence;
+    public int strength;
+    public int agility;
+    public int intelligence;
     protected int level;
     protected int experience;
     public int minLevel;
@@ -127,56 +127,72 @@ public class StatsManager : MonoBehaviour
 
     public void TryAttack(StatsManager other)
     {
-        int damage = 0;
-        string messageWhenTryingAttack = string.Empty;
-        HitStatus status = this.DidHit(other);
-        switch(status)
+        bool canReceiveAttack = true;
+        if(other.gameObject.tag == "Enemy")
         {
-            case HitStatus.EpicFail:
-                damage = this.EpicFail();
-            break;
-            case HitStatus.FacePalm:
-                // Missed
-                UIManager.outputMessages.Add(string.Format("{0} missed {1}", this.GetName(), other.GetName()));
-            break;
-            case HitStatus.NotBad:
-                messageWhenTryingAttack += string.Format("{0} hit {1}", this.GetName(), other.GetName());
-                UIManager.outputMessages.Add(messageWhenTryingAttack);
-                damage = this.RollDamage(other);
-                if(("" + UIManager.outputMessages[UIManager.outputMessages.Count - 1]).Contains("experience"))
-                {
-                    UIManager.outputMessages[UIManager.outputMessages.Count - 2] += string.Format(" by {0}", damage);
-                }
-                else
-                {
-                    UIManager.outputMessages[UIManager.outputMessages.Count - 1] += string.Format(" by {0}", damage);
-                }
-            break;
-            case HitStatus.YoureAwesome:
-                messageWhenTryingAttack += string.Format("{0} critically hit {1}", this.GetName(), other.GetName());
-                UIManager.outputMessages.Add(messageWhenTryingAttack);
-                damage = this.RollDamage(other);
-                damage += this.RollDamage(other);
-                if(("" + UIManager.outputMessages[UIManager.outputMessages.Count - 1]).Contains("experience"))
-                {
-                    UIManager.outputMessages[UIManager.outputMessages.Count - 2] += string.Format(" by {0}", damage);
-                }
-                else
-                {
-                    UIManager.outputMessages[UIManager.outputMessages.Count - 1] += string.Format(" by {0}", damage);
-                }
-            break;
+            var enemy = other.gameObject.GetComponent<EnemyController>();
+            canReceiveAttack = enemy.CanReceiveAttack();
         }
-        this.ShowDamageBurst(status, damage);
-        if(damage > 0)
+        if(canReceiveAttack)
         {
-            other.flashAfterTakingDamage = true;
-            other.flashAfterTakingDamageCounter = other.flashAfterTakingDamageLength;
-            if(other.gameObject.tag == "Player") { this.sfxManager.playerHurt.Play(); }
+            int damage = 0;
+            string messageWhenTryingAttack = string.Empty;
+            HitStatus status = this.DidHit(other);
+            switch(status)
+            {
+                case HitStatus.EpicFail:
+                    damage = this.EpicFail();
+                break;
+                case HitStatus.FacePalm:
+                    // Missed
+                    UIManager.outputMessages.Add(string.Format("{0} missed {1}", this.GetName(), other.GetName()));
+                break;
+                case HitStatus.NotBad:
+                    messageWhenTryingAttack += string.Format("{0} hit {1}", this.GetName(), other.GetName());
+                    UIManager.outputMessages.Add(messageWhenTryingAttack);
+                    damage = this.RollDamage(other);
+                    if(("" + UIManager.outputMessages[UIManager.outputMessages.Count - 1]).Contains("experience"))
+                    {
+                        UIManager.outputMessages[UIManager.outputMessages.Count - 2] += string.Format(" by {0}", damage);
+                    }
+                    else
+                    {
+                        UIManager.outputMessages[UIManager.outputMessages.Count - 1] += string.Format(" by {0}", damage);
+                    }
+                break;
+                case HitStatus.YoureAwesome:
+                    messageWhenTryingAttack += string.Format("{0} critically hit {1}", this.GetName(), other.GetName());
+                    UIManager.outputMessages.Add(messageWhenTryingAttack);
+                    damage = this.RollDamage(other);
+                    damage += this.RollDamage(other);
+                    if(("" + UIManager.outputMessages[UIManager.outputMessages.Count - 1]).Contains("experience"))
+                    {
+                        UIManager.outputMessages[UIManager.outputMessages.Count - 2] += string.Format(" by {0}", damage);
+                    }
+                    else
+                    {
+                        UIManager.outputMessages[UIManager.outputMessages.Count - 1] += string.Format(" by {0}", damage);
+                    }
+                break;
+            }
+            this.ShowDamageBurst(status, damage);
+            if(damage > 0)
+            {
+                other.flashAfterTakingDamage = true;
+                other.flashAfterTakingDamageCounter = other.flashAfterTakingDamageLength;
+                if(other.gameObject.tag == "Player") { this.sfxManager.playerHurt.Play(); }
 
-            this.sceneManager.SetObjectsThatTouch(this.gameObject, other.gameObject);
+                this.sceneManager.SetObjectsThatTouch(this.gameObject, other.gameObject);
 
-            // DB: Save who took damage
+                // DB: Save who took damage
+            }
+        }
+        else
+        {
+            UIManager.outputMessages.Add("INVULNERABLE!");
+            var clone = (GameObject)Instantiate(this.damageNumbers, this.gameObject.transform.position, Quaternion.Euler(Vector3.zero));
+            FloatingNumbers damageText = clone.GetComponent<FloatingNumbers>();
+            damageText.SetHitStatus(HitStatus.Invulnerable);
         }
     }
 
@@ -255,9 +271,9 @@ public class StatsManager : MonoBehaviour
             this.SetLevel(level);
             for (int i = 0; i < level; i++)
             {
-                this.SetStrength(Dice.Roll(8));
-                this.SetAgility(Dice.Roll(8));
-                this.SetIntelligence(Dice.Roll(8));
+                //this.SetStrength(Dice.Roll(8));
+                //this.SetAgility(Dice.Roll(8));
+                //this.SetIntelligence(Dice.Roll(8));
             }
         }
     }
@@ -272,9 +288,9 @@ public class StatsManager : MonoBehaviour
 
     public void AddExperience(int expToAdd)
     {
-        this.experience += expToAdd;
+        //this.experience += expToAdd;
         // DB: Add experience for the player
-        UIManager.outputMessages.Add(string.Format("{0} got {1} experience!", this.GetName(), expToAdd));
+        //UIManager.outputMessages.Add(string.Format("{0} got {1} experience!", this.GetName(), expToAdd));
     }
 
     public int ExperienceYeld()
@@ -297,10 +313,10 @@ public class StatsManager : MonoBehaviour
     private void LevelUp()
     {
         // DB: Save new level for the player
-        this.level += 1;
-        UIManager.outputMessages.Add(string.Format("{0} level up! Level {1}", this.GetName(), this.GetLevel()));
-        this.LevelUpStats();
-        this.RecoverFullHealth();
+        //this.level += 1;
+        //UIManager.outputMessages.Add(string.Format("{0} level up! Level {1}", this.GetName(), this.GetLevel()));
+        //this.LevelUpStats();
+        //this.RecoverFullHealth();
     }
 
     private void LevelUpStats()
@@ -311,15 +327,15 @@ public class StatsManager : MonoBehaviour
         else if(this.level % 5 == 0) goUpStats = 5;
         else if(this.level % 3 == 0) goUpStats = 3;
 
-        int newStr = (Dice.Roll(goUpStats));
-        this.strength += newStr;
-        int newAgi = (Dice.Roll(goUpStats));
-        this.agility += newAgi;
-        int newInt = (Dice.Roll(goUpStats));
-        this.intelligence += newInt;
+        //int newStr = (Dice.Roll(goUpStats));
+        //this.strength += newStr;
+        //int newAgi = (Dice.Roll(goUpStats));
+        //this.agility += newAgi;
+        //int newInt = (Dice.Roll(goUpStats));
+        //this.intelligence += newInt;
         
         // DB: Save new str, agi and int for the player
-        UIManager.outputMessages.Add(string.Format("Strength +{0} / Agility +{1} / Intelligence +{2}", newStr, newAgi, newInt));
+        //UIManager.outputMessages.Add(string.Format("Strength +{0} / Agility +{1} / Intelligence +{2}", newStr, newAgi, newInt));
     }
 
     public void AddMoney(int goldToAdd)

@@ -47,6 +47,10 @@ public class FloatingNumbers : MonoBehaviour
                 this.displayNumber.text = "" + this.damageDone;
                 this.displayNumber.color = Color.green;
                 break;
+            case HitStatus.Invulnerable:
+                this.displayNumber.text = "INVULNERABLE !!!";
+                this.displayNumber.color = Color.black;
+                break;
         }
 
         transform.position = new Vector3(transform.position.x, transform.position.y + (this.moveSpeed * Time.deltaTime), transform.position.z);
