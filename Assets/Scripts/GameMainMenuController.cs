@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameMainMenuController : MonoBehaviour
 {
@@ -40,12 +41,13 @@ public class GameMainMenuController : MonoBehaviour
 
     public void TryLogin()
     {
-        this.isPlayerLogged = this.loginPageController.Login();
-        if(!this.isPlayerLogged)
-        {
-            // Message like 'Username or Password Incorrect'
-        }
-        this.CheckPlayerLogged();
+        //this.isPlayerLogged = this.loginPageController.Login();
+        //if(!this.isPlayerLogged)
+        //{
+        //    // Message like 'Username or Password Incorrect'
+        //}
+        //this.CheckPlayerLogged();
+        SceneManager.LoadScene("Level 1");
     }
 
     public void TryLogout()
