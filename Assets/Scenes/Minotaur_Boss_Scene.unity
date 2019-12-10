@@ -1111,6 +1111,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3356877863595876544, guid: e6877c60a0b9a4f8d93106e7ad86b862,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 264386521
+      objectReference: {fileID: 0}
+    - target: {fileID: 3356877863595876544, guid: e6877c60a0b9a4f8d93106e7ad86b862,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5223085987422278965, guid: e6877c60a0b9a4f8d93106e7ad86b862,
         type: 3}
       propertyPath: m_SortingLayerID

@@ -115,8 +115,8 @@ namespace RPGWorldCapstone
                 {
                     //this.player.gameObject.SetActive(false);
                     // TODO: Send player to main screen
-                    Application.LoadLevel("Main_Scene");
-                    if(this.player != null) { this.player.startPoint = "Point01"; }
+                    Application.LoadLevel("GameMainMenuScene");
+                    //if(this.player != null) { this.player.startPoint = "Point01"; }
                 }
             }
         }
