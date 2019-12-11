@@ -27,7 +27,9 @@ namespace RPGWorldCapstone
         public float timeToAutoRegen;
         protected float timeToAutoRegenCounter;
 
-        public LoadNewArea loadNewLevel; 
+        public LoadNewArea loadNewLevel;
+
+        public bool isDoorOpen;
 
         // Setters
         public void SetObjectsThatTouch(GameObject hit, GameObject took)
@@ -86,6 +88,7 @@ namespace RPGWorldCapstone
             try { this.checkRespawnMonsters(); } catch { }
             this.checkPlayerAutoRegen();
             this.checkBoss();
+            this.checkSwitches();
         }
 
         void checkPlayer()
@@ -204,6 +207,22 @@ namespace RPGWorldCapstone
             if(this.boss.GetStats().GetCurrentHealth() <= 0)
             {
                 this.loadNewLevel.GoTo();
+            }
+        }
+
+        void checkSwitches()
+        {
+            try
+            {
+                this.isDoorOpen = FindObjectOfType<SwitchObject>().IsOn();
+                if(this.isDoorOpen)
+                {
+                    FindObjectOfType<DoorObject>().gameObject.SetActive(false);
+                }
+            }
+            catch
+            {
+                
             }
         }
     }

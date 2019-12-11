@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelToLoad: Dungeon1
-  exitPoint: Level_1_SP
+  exitPoint: Dungeon1_SP
 --- !u!4 &144465134
 Transform:
   m_ObjectHideFlags: 0

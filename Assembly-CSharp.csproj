@@ -72,6 +72,7 @@
      <Compile Include="Assets\Scripts\DestroyOverTime.cs" />
      <Compile Include="Assets\Scripts\DialogHolder.cs" />
      <Compile Include="Assets\Scripts\DialogManager.cs" />
+     <Compile Include="Assets\Scripts\DoorObject.cs" />
      <Compile Include="Assets\Scripts\Enemies\EnemiesManager.cs" />
      <Compile Include="Assets\Scripts\Enemies\EnemyController.cs" />
      <Compile Include="Assets\Scripts\Enemies\GhostController.cs" />
@@ -97,6 +98,7 @@
      <Compile Include="Assets\Scripts\SceneManager.cs" />
      <Compile Include="Assets\Scripts\SFXManager.cs" />
      <Compile Include="Assets\Scripts\StatsManager.cs" />
+     <Compile Include="Assets\Scripts\SwitchObject.cs" />
      <Compile Include="Assets\Scripts\UIManager.cs" />
      <Compile Include="Assets\Scripts\Util\Dice.cs" />
      <Compile Include="Assets\Scripts\Util\EnemyType.cs" />

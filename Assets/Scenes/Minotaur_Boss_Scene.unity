@@ -256,6 +256,7 @@ MonoBehaviour:
   recoil: 0.5
   timeToAutoRegen: 4.5
   loadNewLevel: {fileID: 1741989343}
+  isDoorOpen: 0
 --- !u!1 &400555818
 GameObject:
   m_ObjectHideFlags: 0
@@ -783,6 +784,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1965728784035918536, guid: e6877c60a0b9a4f8d93106e7ad86b862,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 264386521
+      objectReference: {fileID: 0}
+    - target: {fileID: 1965728784035918536, guid: e6877c60a0b9a4f8d93106e7ad86b862,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1969420649723060361, guid: e6877c60a0b9a4f8d93106e7ad86b862,
         type: 3}
