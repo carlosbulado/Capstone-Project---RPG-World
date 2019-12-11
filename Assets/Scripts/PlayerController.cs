@@ -58,6 +58,7 @@ public class PlayerController : EntityController
     protected override void Update()
     {
         base.Update();
+        transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
         // Every frame the player movement is false
         this.moving = false;
 
@@ -77,7 +78,7 @@ public class PlayerController : EntityController
 
             if(this.moveInput != Vector2.zero)
             {
-                this.myRigidBody.velocity = new Vector2(this.moveInput.x * this.moveSpeed, this.moveInput.y * this.moveSpeed);
+                this.myRigidBody.velocity = new Vector3(this.moveInput.x * this.moveSpeed, this.moveInput.y * this.moveSpeed, 0f);
                 this.moving = true;
                 this.lastMove = this.moveInput;
             }
@@ -159,6 +160,11 @@ public class PlayerController : EntityController
         // }
 
         // player = PhotonNetwork.Instantiate(Prefab.gameObject.name, player.lastMove, Quaternion.identity).GetComponent<PlayerController>();
+    }
+
+    public void HidePlayer()
+    {
+        transform.position = new Vector3(transform.position.x, transform.position.y, -1223f);
     }
 }
 

@@ -8,7 +8,7 @@ public class StatsManager : MonoBehaviour
     public GameObject gameObject;
     public SpriteRenderer spriteRenderer;
     public int currentHealth;
-    protected string name;
+    public string name;
     public int strength;
     public int agility;
     public int intelligence;
@@ -91,6 +91,8 @@ public class StatsManager : MonoBehaviour
     // Update is called once per frame
     public void Update()
     {
+        if(this.sceneManager == null) { this.sceneManager = FindObjectOfType<RPGWorldCapstone.SceneManager>(); }
+
         if(this.currentHealth <= 0 && this.gameObject.tag != "Player")
         {
             gameObject.SetActive(false);

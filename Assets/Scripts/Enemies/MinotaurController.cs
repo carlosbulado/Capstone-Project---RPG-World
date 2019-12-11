@@ -5,6 +5,7 @@ using UnityEngine;
 public class MinotaurController : EnemyController
 {
     public EnemyController[] allEnemiesOnScreen;
+
     protected override void AfterStart()
     {
         
@@ -43,7 +44,7 @@ public class MinotaurController : EnemyController
     public override bool CanReceiveAttack()
     {
         this.allEnemiesOnScreen = FindObjectsOfType<EnemyController>();
-        return this.allEnemiesOnScreen.Length <= 11;
+        return this.allEnemiesOnScreen.Length <= 2;
     }
 
     // protected override void Attack()

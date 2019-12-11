@@ -80,6 +80,7 @@ public abstract class EnemyController : EntityController
         {
             case EnemyType.Slime: return "Slime";
             case EnemyType.Minotaur: return "Minotaur";
+            case EnemyType.Ghost: return "Ghost";
         }
         return "";
     }

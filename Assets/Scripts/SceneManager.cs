@@ -27,6 +27,10 @@ namespace RPGWorldCapstone
         public float timeToAutoRegen;
         protected float timeToAutoRegenCounter;
 
+        public LoadNewArea loadNewLevel;
+
+        public bool isDoorOpen;
+
         // Setters
         public void SetObjectsThatTouch(GameObject hit, GameObject took)
         {
@@ -50,16 +54,16 @@ namespace RPGWorldCapstone
         // Start is called before the first frame update
         void Start()
         {
-            if (!SceneManager.sceneManagerExists)
-            {
-                SceneManager.sceneManagerExists = true;
-                // This code will make sure that the player will not be destroyed when change scenes
-                DontDestroyOnLoad(transform.gameObject);
-            }
-            else
-            {
-                Destroy(gameObject);
-            }
+            // if (!SceneManager.sceneManagerExists)
+            // {
+            //     SceneManager.sceneManagerExists = true;
+            //     // This code will make sure that the player will not be destroyed when change scenes
+            //     DontDestroyOnLoad(transform.gameObject);
+            // }
+            // else
+            // {
+            //     Destroy(gameObject);
+            // }
 
             if (this.enemiesManager == null) { this.enemiesManager = FindObjectOfType<EnemiesManager>(); }
 
@@ -81,9 +85,10 @@ namespace RPGWorldCapstone
         void Update()
         {
             this.checkPlayer();
-            this.checkRespawnMonsters();
+            try { this.checkRespawnMonsters(); } catch { }
             this.checkPlayerAutoRegen();
             this.checkBoss();
+            this.checkSwitches();
         }
 
         void checkPlayer()
@@ -115,8 +120,8 @@ namespace RPGWorldCapstone
                 {
                     //this.player.gameObject.SetActive(false);
                     // TODO: Send player to main screen
-                    Application.LoadLevel("Main_Scene");
-                    if(this.player != null) { this.player.startPoint = "Point01"; }
+                    Application.LoadLevel("GameOver");
+                    //if(this.player != null) { this.player.startPoint = "Point01"; }
                 }
             }
         }
@@ -124,37 +129,39 @@ namespace RPGWorldCapstone
         void checkRespawnMonsters()
         {
             this.allEnemiesOnScene = FindObjectsOfType<EnemyController>();
-
-            for (int i = 0; i < this.respawnPointsEnemyAlive.Length; i++) { this.respawnPointsEnemyAlive[i] = false; }
-
-            for (int i = 0; i < this.allEnemiesOnScene.Length; i++)
+            if(this.allEnemiesOnScene.Length > 0)
             {
-                var item = this.allEnemiesOnScene[i];
-                this.respawnPointsEnemyAlive[item.numEnemyOnScene] = true;
-            }
+                for (int i = 0; i < this.respawnPointsEnemyAlive.Length; i++) { this.respawnPointsEnemyAlive[i] = false; }
 
-            if (this.respawnPoints != null && this.respawnPoints.Length > 0)
-            {
-                this.nextRespawn = Dice.Roll(respawnPoints.Length);
-                nextRespawn--;
-                if (!this.respawnPointsEnemyAlive[nextRespawn] && this.respawnCounter[nextRespawn] <= 0)
+                for (int i = 0; i < this.allEnemiesOnScene.Length; i++)
                 {
-                    // DB: Loads all sprites for this scene
-                    EnemyController newEmeny = this.enemiesManager.GetSlime();
-                    var enemyClone = (EnemyController)Instantiate(newEmeny, this.respawnPoints[nextRespawn].transform.position, this.respawnPoints[nextRespawn].transform.rotation);
-                    this.respawnPointsEnemyAlive[nextRespawn] = true;
-                    this.respawnCounter[nextRespawn] = newEmeny.respawnTime;
-                    enemyClone.gameObject.transform.position = new Vector3(enemyClone.gameObject.transform.position.x, enemyClone.gameObject.transform.position.y, 0);
-                    enemyClone.gameObject.SetActive(true);
-                    enemyClone.numEnemyOnScene = nextRespawn;
+                    var item = this.allEnemiesOnScene[i];
+                    this.respawnPointsEnemyAlive[item.numEnemyOnScene] = true;
                 }
-            }
 
-            for (int i = 0; i < this.respawnCounter.Length; i++)
-            {
-                if (!this.respawnPointsEnemyAlive[i])
+                if (this.respawnPoints != null && this.respawnPoints.Length > 0)
                 {
-                    this.respawnCounter[i] -= Time.deltaTime;
+                    this.nextRespawn = Dice.Roll(respawnPoints.Length);
+                    nextRespawn--;
+                    if (!this.respawnPointsEnemyAlive[nextRespawn] && this.respawnCounter[nextRespawn] <= 0)
+                    {
+                        // DB: Loads all sprites for this scene
+                        EnemyController newEmeny = this.enemiesManager.GetSlime();
+                        var enemyClone = (EnemyController)Instantiate(newEmeny, this.respawnPoints[nextRespawn].transform.position, this.respawnPoints[nextRespawn].transform.rotation);
+                        this.respawnPointsEnemyAlive[nextRespawn] = true;
+                        this.respawnCounter[nextRespawn] = newEmeny.respawnTime;
+                        enemyClone.gameObject.transform.position = new Vector3(enemyClone.gameObject.transform.position.x, enemyClone.gameObject.transform.position.y, 0);
+                        enemyClone.gameObject.SetActive(true);
+                        enemyClone.numEnemyOnScene = nextRespawn;
+                    }
+                }
+
+                for (int i = 0; i < this.respawnCounter.Length; i++)
+                {
+                    if (!this.respawnPointsEnemyAlive[i])
+                    {
+                        this.respawnCounter[i] -= Time.deltaTime;
+                    }
                 }
             }
         }
@@ -190,7 +197,32 @@ namespace RPGWorldCapstone
                     this.player.GetStats().SetIntelligence(this.player.GetStats().GetIntelligence() + 20);
                     this.player.GetStats().RecoverFullHealth();
                     // TODO: Send player to second dungeon level
+                    this.bossKilled();
                 }
+            }
+        }
+
+        void bossKilled()
+        {
+            if(this.boss.GetStats().GetCurrentHealth() <= 0)
+            {
+                this.loadNewLevel.GoTo();
+            }
+        }
+
+        void checkSwitches()
+        {
+            try
+            {
+                this.isDoorOpen = FindObjectOfType<SwitchObject>().IsOn();
+                if(this.isDoorOpen)
+                {
+                    FindObjectOfType<DoorObject>().gameObject.SetActive(false);
+                }
+            }
+            catch
+            {
+                
             }
         }
     }

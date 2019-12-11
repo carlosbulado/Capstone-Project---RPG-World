@@ -387,6 +387,7 @@ MonoBehaviour:
   whoGotHit: {fileID: 0}
   recoil: 0
   timeToAutoRegen: 0
+  loadNewLevel: {fileID: 0}
 --- !u!4 &1254350779
 Transform:
   m_ObjectHideFlags: 0
