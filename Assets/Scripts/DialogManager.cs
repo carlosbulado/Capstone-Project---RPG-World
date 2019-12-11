@@ -25,8 +25,6 @@ public class DialogManager : MonoBehaviour
     {
         if(this.isActive && Input.GetKeyUp(KeyCode.Space))
         {
-            //this.dialogBox.SetActive(false);
-            //this.isActive = false;
             this.currentLine++;
         }
 

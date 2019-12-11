@@ -27,10 +27,12 @@ public class DialogHolder : MonoBehaviour
         {
             if(Input.GetKeyUp(KeyCode.Space))
             {
-                //this.dialogManager.ShowBox(this.message);
                 if(!this.dialogManager.isActive)
                 {
+                    this.dialogManager.dialogLines = this.dialogLines;
+                    this.dialogManager.currentLine = 0;
                     this.dialogManager.ShowDialog(this.dialogLines);
+
                 }
 
                 var whosTalking = transform.parent.GetComponent<VillagerController>();
