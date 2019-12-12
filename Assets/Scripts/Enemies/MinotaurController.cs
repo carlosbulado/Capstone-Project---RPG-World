@@ -44,7 +44,7 @@ public class MinotaurController : EnemyController
     public override bool CanReceiveAttack()
     {
         this.allEnemiesOnScreen = FindObjectsOfType<EnemyController>();
-        return this.allEnemiesOnScreen.Length <= 2;
+        return this.allEnemiesOnScreen.Length <= 5;
     }
 
     // protected override void Attack()

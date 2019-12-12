@@ -455,7 +455,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  boss: {fileID: 0}
+  boss: {fileID: 1744228323}
   isPlayerRespawn: 0
   timeToPlayerRespawn: 0
   enemiesManager: {fileID: 0}
@@ -464,7 +464,8 @@ MonoBehaviour:
   whoGotHit: {fileID: 0}
   recoil: 0
   timeToAutoRegen: 0
-  loadNewLevel: {fileID: 0}
+  loadNewLevel: {fileID: 144465133}
+  isDoorOpen: 0
 --- !u!1 &1744228322
 GameObject:
   m_ObjectHideFlags: 0
